@@ -8,6 +8,7 @@ import com.yioks.springboot.common.sms.ISmsSender;
 import com.yioks.springboot.common.sms.properties.SubmailSmsProperties;
 import com.yioks.springboot.common.utils.DigestUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,17 +18,14 @@ import java.util.TreeMap;
 
 public class SubmailSmsProvider implements ISmsProvider {
 
+  @Autowired
   private RestTemplate restTemplate;
 
+  @Autowired
   private IConfigurationService configurationService;
 
+  @Autowired
   private SubmailSmsProperties smsProperties;
-
-  public SubmailSmsProvider(IConfigurationService configurationService, RestTemplate restTemplate, SubmailSmsProperties smsProperties) {
-    this.configurationService = configurationService;
-    this.restTemplate = restTemplate;
-    this.smsProperties = smsProperties;
-  }
 
   private ISmsSender smsSender;
 

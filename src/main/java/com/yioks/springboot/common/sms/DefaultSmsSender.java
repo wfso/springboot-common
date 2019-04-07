@@ -18,33 +18,33 @@ import java.util.Map;
 @Slf4j
 public class DefaultSmsSender implements ISmsSender, BeanPostProcessor {
 
-  protected SmsProperties smsProperties;
+  @Autowired
+  private SmsProperties smsProperties;
 
-  protected IConfigurationService configurationService;
+  @Autowired
+  private IConfigurationService configurationService;
 
-  public DefaultSmsSender(IConfigurationService configurationService, SmsProperties smsProperties) {
-    this.configurationService = configurationService;
-    this.smsProperties = smsProperties;
-    this.type = smsProperties.getType();
+  @Autowired(required = false)
+  private RedissonClient redissonClient;
+
+  public DefaultSmsSender() {
     providers = new ArrayList<>();
   }
 
-  @Autowired(required = false)
-  protected RedissonClient redissonClient;
+  private List<ISmsProvider> providers;
 
-  protected List<ISmsProvider> providers;
-
-  protected String type;
+  private String type;
 
   @PostConstruct
   public void postConstruct() {
+    this.type = smsProperties.getType();
     if (redissonClient != null) {
       RTopic rTopic = redissonClient.getTopic("sms.subscribe");
       rTopic.addListener(Integer.class, (s, m) -> clear());
     }
   }
 
-  public ISmsResult sendSms(String phone, String template, Map<String, String> vars) {
+  public ISmsResult sendSms(String phone, String template, Map<String, String> vars, String type) {
     boolean flag = configurationService.getBooleanConfigure("sms.enable", true);
     if (flag) {
       for (ISmsProvider provider : providers) {
@@ -55,6 +55,10 @@ public class DefaultSmsSender implements ISmsSender, BeanPostProcessor {
       log.warn("No available provider was found by type [{}]", type);
     }
     return null;
+  }
+
+  public ISmsResult sendSms(String phone, String template, Map<String, String> vars) {
+    return sendSms(phone, template, vars, type);
   }
 
   private void clear() {

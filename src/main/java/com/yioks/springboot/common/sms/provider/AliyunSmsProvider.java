@@ -17,19 +17,17 @@ import com.yioks.springboot.common.sms.properties.AliyunSmsProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.util.Map;
 
 public class AliyunSmsProvider implements ISmsProvider {
 
-  public AliyunSmsProvider(IConfigurationService configurationService, AliyunSmsProperties smsProperties) {
-    this.configurationService = configurationService;
-    this.smsProperties = smsProperties;
-  }
-
+  @Autowired
   private IConfigurationService configurationService;
 
+  @Autowired
   private AliyunSmsProperties smsProperties;
 
   private ISmsSender smsSender;

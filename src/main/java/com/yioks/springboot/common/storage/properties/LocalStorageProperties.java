@@ -5,9 +5,12 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
-@ConfigurationProperties("storage")
+@ConfigurationProperties("storage.local")
 @Getter
 @Setter
-public class StorageProperties {
-  private String type = "local";
+public class LocalStorageProperties {
+  private String filePath = "/uploads/";
+
+  private String prefixUrl = "/uploads/";
+
 }

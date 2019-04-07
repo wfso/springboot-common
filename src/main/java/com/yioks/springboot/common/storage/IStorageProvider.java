@@ -1,9 +1,13 @@
 package com.yioks.springboot.common.storage;
 
-import java.io.InputStream;
-
 public interface IStorageProvider {
-  String putFile(String bucket, String fileName, InputStream inputStream);
+  IStorage getStorage();
+
+  void clear();
 
   String getType();
+
+  default boolean supports(String type) {
+    return type != null && type.equalsIgnoreCase(getType());
+  }
 }

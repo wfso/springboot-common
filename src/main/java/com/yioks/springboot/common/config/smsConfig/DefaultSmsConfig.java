@@ -1,7 +1,5 @@
 package com.yioks.springboot.common.config.smsConfig;
 
-
-import com.yioks.springboot.common.service.IConfigurationService;
 import com.yioks.springboot.common.sms.DefaultSmsSender;
 import com.yioks.springboot.common.sms.ISmsSender;
 import com.yioks.springboot.common.sms.properties.AliyunSmsProperties;
@@ -11,7 +9,6 @@ import com.yioks.springboot.common.sms.provider.AliyunSmsProvider;
 import com.yioks.springboot.common.sms.provider.SubmailSmsProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class DefaultSmsConfig {
@@ -32,17 +29,17 @@ public class DefaultSmsConfig {
   }
 
   @Bean
-  public AliyunSmsProvider aliyunSmsProvider(IConfigurationService configurationService, AliyunSmsProperties smsProperties) {
-    return new AliyunSmsProvider(configurationService, smsProperties);
+  public AliyunSmsProvider aliyunSmsProvider() {
+    return new AliyunSmsProvider();
   }
 
   @Bean
-  public SubmailSmsProvider aliyunSmsProvider(IConfigurationService configurationService, RestTemplate restTemplate, SubmailSmsProperties smsProperties) {
-    return new SubmailSmsProvider(configurationService, restTemplate, smsProperties);
+  public SubmailSmsProvider submailSmsProvider() {
+    return new SubmailSmsProvider();
   }
 
   @Bean
-  public ISmsSender smsSender(IConfigurationService configurationService, SmsProperties smsProperties) {
-    return new DefaultSmsSender(configurationService, smsProperties);
+  public ISmsSender smsSender() {
+    return new DefaultSmsSender();
   }
 }
