@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yioks.springboot.common.mapper.base">
+
+  <sql id="FiltersAndWhereExpression">
+    <foreach open="(" close=")" collection="andFilters" item="outerFilter" separator="and">
+      <choose>
+        <when test="outerFilter.isComplex()">
+          <foreach open="(" close=")" collection="outerFilter.list" item="innerFilter" separator="or">
+            <choose>
+              <when test="innerFilter.isNoValue()">
+                ${innerFilter.condition}
+              </when>
+              <when test="innerFilter.isIn()">
+                ${innerFilter.condition}
+                <foreach open="(" close=")" collection="innerFilter.inList" item="inListItem" separator=",">
+                  #{inListItem}
+                </foreach>
+              </when>
+              <otherwise>
+                ${innerFilter.condition} #{innerFilter.value}
+              </otherwise>
+            </choose>
+          </foreach>
+        </when>
+        <otherwise>
+          <choose>
+            <when test="outerFilter.isNoValue()">
+              ${outerFilter.condition}
+            </when>
+            <when test="outerFilter.isIn()">
+              ${outerFilter.condition}
+              <foreach open="(" close=")" collection="outerFilter.inList" item="inListItem" separator=",">
+                #{inListItem}
+              </foreach>
+            </when>
+            <otherwise>
+              ${outerFilter.condition} #{outerFilter.value}
+            </otherwise>
+          </choose>
+        </otherwise>
+      </choose>
+    </foreach>
+  </sql>
+
+
+  <sql id="FiltersOrWhereExpression">
+    <foreach open="(" close=")" collection="orFilters" item="outerFilter" separator="or">
+      <choose>
+        <when test="outerFilter.isComplex()">
+          <foreach open="(" close=")" collection="outerFilter.list" item="innerFilter" separator="and">
+            <choose>
+              <when test="innerFilter.isNoValue()">
+                ${innerFilter.condition}
+              </when>
+              <when test="innerFilter.isIn()">
+                ${innerFilter.condition}
+                <foreach open="(" close=")" collection="innerFilter.inList" item="inListItem" separator=",">
+                  #{inListItem}
+                </foreach>
+              </when>
+              <otherwise>
+                ${innerFilter.condition} #{innerFilter.value}
+              </otherwise>
+            </choose>
+          </foreach>
+        </when>
+        <otherwise>
+          <choose>
+            <when test="outerFilter.isNoValue()">
+              ${outerFilter.condition}
+            </when>
+            <when test="outerFilter.isIn()">
+              ${outerFilter.condition}
+              <foreach open="(" close=")" collection="outerFilter.inList" item="inListItem" separator=",">
+                #{inListItem}
+              </foreach>
+            </when>
+            <otherwise>
+              ${outerFilter.condition} #{outerFilter.value}
+            </otherwise>
+          </choose>
+        </otherwise>
+      </choose>
+    </foreach>
+  </sql>
+
+
+  <sql id="FilterWhereExpression">
+    <choose>
+      <when test="filter.andComplex">
+        <foreach open="(" close=")" collection="filter.list" item="outerFilter" separator="and">
+          <choose>
+            <when test="outerFilter.isComplex()">
+              <foreach open="(" close=")" collection="outerFilter.list" item="innerFilter" separator="or">
+                <choose>
+                  <when test="innerFilter.isNoValue()">
+                    ${innerFilter.condition}
+                  </when>
+                  <when test="innerFilter.isIn()">
+                    ${innerFilter.condition}
+                    <foreach open="(" close=")" collection="innerFilter.inList" item="inListItem" separator=",">
+                      #{inListItem}
+                    </foreach>
+                  </when>
+                  <otherwise>
+                    ${innerFilter.condition} #{innerFilter.value}
+                  </otherwise>
+                </choose>
+              </foreach>
+            </when>
+            <otherwise>
+              <choose>
+                <when test="outerFilter.isNoValue()">
+                  ${outerFilter.condition}
+                </when>
+                <when test="outerFilter.isIn()">
+                  ${outerFilter.condition}
+                  <foreach open="(" close=")" collection="outerFilter.inList" item="inListItem" separator=",">
+                    #{inListItem}
+                  </foreach>
+                </when>
+                <otherwise>
+                  ${outerFilter.condition} #{outerFilter.value}
+                </otherwise>
+              </choose>
+            </otherwise>
+          </choose>
+        </foreach>
+      </when>
+      <when test="filter.orComplex">
+        <foreach open="(" close=")" collection="filter.list" item="outerFilter" separator="or">
+          <choose>
+            <when test="outerFilter.isComplex()">
+              <foreach open="(" close=")" collection="outerFilter.list" item="innerFilter" separator="and">
+                <choose>
+                  <when test="innerFilter.isNoValue()">
+                    ${innerFilter.condition}
+                  </when>
+                  <when test="innerFilter.isIn()">
+                    ${innerFilter.condition}
+                    <foreach open="(" close=")" collection="innerFilter.inList" item="inListItem" separator=",">
+                      #{inListItem}
+                    </foreach>
+                  </when>
+                  <otherwise>
+                    ${innerFilter.condition} #{innerFilter.value}
+                  </otherwise>
+                </choose>
+              </foreach>
+            </when>
+            <otherwise>
+              <choose>
+                <when test="outerFilter.isNoValue()">
+                  ${outerFilter.condition}
+                </when>
+                <when test="outerFilter.isIn()">
+                  ${outerFilter.condition}
+                  <foreach open="(" close=")" collection="outerFilter.inList" item="inListItem" separator=",">
+                    #{inListItem}
+                  </foreach>
+                </when>
+                <otherwise>
+                  ${outerFilter.condition} #{outerFilter.value}
+                </otherwise>
+              </choose>
+            </otherwise>
+          </choose>
+        </foreach>
+      </when>
+    </choose>
+  </sql>
+</mapper>
