@@ -3,6 +3,8 @@ package com.yioks.springboot.common.config.shiroConfig;
 import com.yioks.springboot.common.filter.CrossDomainFilter;
 import com.yioks.springboot.common.shiro.factoryBeans.CustomizedSecurityManagerFactoryBean;
 import com.yioks.springboot.common.shiro.realm.DefaultAuthorizationRealm;
+import com.yioks.springboot.common.shiro.session.utils.DefaultShiroSessionUtil;
+import com.yioks.springboot.common.shiro.session.utils.ISessionUtil;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -30,11 +32,14 @@ public class DefaultShiroConfig {
   }
 
   @Bean
-  public DefaultAuthorizationRealm defaultAuthorizationRealm(){
-    return new DefaultAuthorizationRealm();
+  public ISessionUtil sessionUtil() {
+    return new DefaultShiroSessionUtil();
   }
 
-
+  @Bean
+  public DefaultAuthorizationRealm defaultAuthorizationRealm() {
+    return new DefaultAuthorizationRealm();
+  }
 
   @Bean()
   public CustomizedSecurityManagerFactoryBean customizedSecurityManagerFactoryBean() {
