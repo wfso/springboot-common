@@ -36,7 +36,8 @@ public abstract class AbstractAuthorizationExceptionHandler {
     String msg = null;
 
     // 无登录
-    if (code.startsWith("This subject is anonymous")) {
+    if (code.startsWith("This subject is anonymous")
+      || code.startsWith("The current Subject is not authenticated")) {
       code = "not-logged-in";
       String msgKey = throwable.getClass().getSimpleName() + "." + code;
       if (messageSource != null) {
