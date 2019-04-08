@@ -19,6 +19,7 @@ public abstract class BaseJpaService<T extends IModel> implements IService<T, Lo
   @Override
   public T create(T entity) {
     updateDomain(entity);
+    entity.setId(0);
     getRepository().save(entity);
     return entity;
   }
