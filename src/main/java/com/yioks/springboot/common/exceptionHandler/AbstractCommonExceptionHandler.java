@@ -19,7 +19,7 @@ public abstract class AbstractCommonExceptionHandler {
 
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  protected ResponseEntity<Object> commonAuthenticationExceptionHandler(CommonException exception, String codeName, String msgName) {
+  protected ResponseEntity<Object> commonExceptionHandler(CommonException exception, String codeName, String msgName) {
     Map<String, Object> result = new HashMap<>();
     logger.warn(exception.getClass().getName());
     logger.warn(exception.getMessage());
