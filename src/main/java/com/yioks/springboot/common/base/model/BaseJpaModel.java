@@ -11,14 +11,14 @@ import java.io.Serializable;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class BaseJpaModel implements IModel, Serializable {
   @Column(updatable = false, nullable = false)
-  @ApiModelProperty(value = "创建时间戳", example = "0")
+  @ApiModelProperty(value = "创建时间戳", example = "0", hidden = true)
   private long createdAt = 0L;
   @Column(updatable = false, nullable = false)
-  @ApiModelProperty(value = "更新时间戳", example = "0")
+  @ApiModelProperty(value = "更新时间戳", example = "0", hidden = true)
   private long updatedAt = 0L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @ApiModelProperty(value = "ID-唯一标识", example = "0")
+  @ApiModelProperty(value = "ID-唯一标识", example = "0", hidden = true)
   private long id = 0L;
 
   public long getCreatedAt() {
