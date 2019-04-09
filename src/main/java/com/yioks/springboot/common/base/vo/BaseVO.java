@@ -1,44 +1,28 @@
 package com.yioks.springboot.common.base.vo;
 
+import com.yioks.springboot.common.validation.groups.Update;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
  * VO的父类
  */
+@Getter
+@Setter
+@ToString
 public class BaseVO implements Serializable {
+  @ApiModelProperty(value = "创建时间戳", example = "0")
+  private Long createdAt;
 
-    @ApiModelProperty("创建时间戳")
-    private long createdAt;
+  @ApiModelProperty(value = "修改时间戳", example = "0")
+  private Long updatedAt;
 
-    @ApiModelProperty("修改时间戳")
-    private long updatedAt;
-
-    @ApiModelProperty("ID-唯一标识")
-    private long id;
-
-    public long getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public long getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(long updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+  @ApiModelProperty(value = "ID-唯一标识", example = "0")
+  @NotNull(groups = {Update.class})
+  private Long id;
 }

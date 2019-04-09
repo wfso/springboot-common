@@ -2,46 +2,34 @@ package com.yioks.springboot.common.base.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.yioks.springboot.common.validation.groups.Update;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Getter
+@Setter
+@ToString
 @MappedSuperclass
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class BaseJpaModel implements IModel, Serializable {
   @Column(updatable = false, nullable = false)
-  @ApiModelProperty(value = "创建时间戳", example = "0", hidden = true)
-  private long createdAt = 0L;
-  @Column(updatable = false, nullable = false)
-  @ApiModelProperty(value = "更新时间戳", example = "0", hidden = true)
-  private long updatedAt = 0L;
+  @ApiModelProperty(value = "创建时间戳", example = "0")
+  private Long createdAt;
+
+  @Column(nullable = false)
+  @ApiModelProperty(value = "更新时间戳", example = "0")
+  private Long updatedAt;
+
   @Id
+  @Column(nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @ApiModelProperty(value = "ID-唯一标识", example = "0", hidden = true)
-  private long id = 0L;
-
-  public long getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(long createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public long getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(long updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
+  @ApiModelProperty(value = "ID-唯一标识", example = "0")
+  @NotNull(groups = {Update.class})
+  private Long id;
 }

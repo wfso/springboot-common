@@ -2,15 +2,15 @@ package com.yioks.springboot.common.base.model;
 
 public interface IModel {
 
-  long getCreatedAt();
+  Long getCreatedAt();
 
-  void setCreatedAt(long createdAt);
+  void setCreatedAt(Long createdAt);
 
-  long getUpdatedAt();
+  Long getUpdatedAt();
 
-  void setUpdatedAt(long updatedAt);
+  void setUpdatedAt(Long updatedAt);
 
-  long getId();
+  Long getId();
 
-  void setId(long id);
+  void setId(Long id);
 }
