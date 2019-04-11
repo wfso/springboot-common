@@ -20,16 +20,15 @@ import java.io.Serializable;
 public abstract class BaseJpaModel implements IModel, Serializable {
   @Column(updatable = false, nullable = false)
   @ApiModelProperty(value = "创建时间戳", example = "0")
-  private Long createdAt;
+  private long createdAt = 0;
 
   @Column(nullable = false)
   @ApiModelProperty(value = "更新时间戳", example = "0")
-  private Long updatedAt;
+  private long updatedAt = 0;
 
   @Id
-  @Column(nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @ApiModelProperty(value = "ID-唯一标识", example = "0")
   @NotNull(groups = {Update.class})
-  private Long id;
+  private long id = 0;
 }

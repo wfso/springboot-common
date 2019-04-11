@@ -137,7 +137,7 @@ public abstract class BaseJpaService<T extends IModel> implements IService<T, Lo
 
   protected void updateDomain(T entity) {
     long time = System.currentTimeMillis();
-    if (entity.getCreatedAt() == null || entity.getCreatedAt() <= 0) {
+    if (entity.getCreatedAt() <= 0) {
       entity.setCreatedAt(time);
     }
     entity.setUpdatedAt(time);
