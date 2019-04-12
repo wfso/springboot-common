@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.base.vo;
 
-import com.yioks.springboot.common.validation.groups.Update;
+import com.yioks.validation.groups.Update;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;

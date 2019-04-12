@@ -2,7 +2,7 @@ package com.yioks.springboot.common.base.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.yioks.springboot.common.validation.groups.Update;
+import com.yioks.validation.groups.Update;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;

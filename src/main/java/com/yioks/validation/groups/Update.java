@@ -1,4 +1,4 @@
-package com.yioks.springboot.common.validation.groups;
+package com.yioks.validation.groups;
 
 import javax.validation.groups.Default;
 
