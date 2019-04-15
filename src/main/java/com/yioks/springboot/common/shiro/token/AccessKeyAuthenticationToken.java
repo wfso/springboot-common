@@ -5,7 +5,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class StatelessAuthenticationToken implements AuthenticationToken {
+public class AccessKeyAuthenticationToken implements AuthenticationToken {
 
   private Object userId;
 

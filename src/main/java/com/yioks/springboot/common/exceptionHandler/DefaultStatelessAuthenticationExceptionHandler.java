@@ -1,7 +1,7 @@
 package com.yioks.springboot.common.exceptionHandler;
 
 import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
-import com.yioks.springboot.common.shiro.token.StatelessAuthenticationToken;
+import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ public class DefaultStatelessAuthenticationExceptionHandler extends AbstractAuth
 
   @ModelAttribute
   public void statelessLogin(HttpServletRequest request) {
-    StatelessAuthenticationToken token = new StatelessAuthenticationToken();
+    AccessKeyAuthenticationToken token = new AccessKeyAuthenticationToken();
     Enumeration<String> enumeration = request.getParameterNames();
     while (enumeration.hasMoreElements()) {
       String paramKey = enumeration.nextElement();

@@ -3,7 +3,7 @@ package com.yioks.springboot.common.shiro.service;
 import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
 import com.yioks.springboot.common.shiro.model.IAccessKey;
 import com.yioks.springboot.common.shiro.model.UserIdentificationPrincipal;
-import com.yioks.springboot.common.shiro.token.StatelessAuthenticationToken;
+import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import com.yioks.springboot.common.utils.MacUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -69,14 +69,14 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
 
   @Override
   default boolean supports(AuthenticationToken token) {
-    return token instanceof StatelessAuthenticationToken;
+    return token instanceof AccessKeyAuthenticationToken;
   }
 
   @Override
   default AuthenticationInfo getAuthenticationInfo(AuthenticationToken token, String realmName) {
-    StatelessAuthenticationToken statelessToken = (StatelessAuthenticationToken) token;
+    AccessKeyAuthenticationToken AccessKeyToken = (AccessKeyAuthenticationToken) token;
 
-    Map<String, String> params = statelessToken.getParams();
+    Map<String, String> params = AccessKeyToken.getParams();
 
     // 请求参数中不包含 accessKeyId
     if (!params.containsKey("accessKeyId")) {
@@ -129,12 +129,12 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
     if (!sign.equalsIgnoreCase(localSign)) {
       throw new StatelessAuthenticationException("AKE-000005");
     }
-    statelessToken.setUserId(new UserIdentificationPrincipal(accessKey.getUserIdentification()));
-    statelessToken.setPassword(MacUtil.hmacSha256Hex(accessKeyId, accessKey.getAccessKeySecret()));
+    AccessKeyToken.setUserId(new UserIdentificationPrincipal(accessKey.getUserIdentification()));
+    AccessKeyToken.setPassword(MacUtil.hmacSha256Hex(accessKeyId, accessKey.getAccessKeySecret()));
 
     return new SimpleAuthenticationInfo(
-      statelessToken.getPrincipal(),
-      statelessToken.getCredentials(),
+      AccessKeyToken.getPrincipal(),
+      AccessKeyToken.getCredentials(),
       realmName
     );
   }
