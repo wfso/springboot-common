@@ -1,10 +1,7 @@
 package com.yioks.springboot.common.shiro.service;
 
 import com.yioks.springboot.common.shiro.exception.UserAuthenticationException;
-import com.yioks.springboot.common.shiro.model.IPermission;
-import com.yioks.springboot.common.shiro.model.IRole;
-import com.yioks.springboot.common.shiro.model.IUser;
-import com.yioks.springboot.common.shiro.model.UserIdentificationPrincipal;
+import com.yioks.springboot.common.shiro.model.*;
 import com.yioks.springboot.common.shiro.token.UserAuthenticationToken;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -45,7 +42,7 @@ public interface IUserService<T extends IUser> extends IAuthenticationService {
   }
 
   default Object getLoginUserIdentification() {
-    return SecurityUtils.getSubject().getPrincipal();
+    return ((ShiroPrincipal)SecurityUtils.getSubject().getPrincipal()).getPrincipal();
   }
 
   default boolean validateCredentials(String userCredentials, String tokenCredentials) {
