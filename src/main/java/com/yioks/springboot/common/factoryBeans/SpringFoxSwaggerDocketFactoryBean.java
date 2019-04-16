@@ -31,114 +31,120 @@ public class SpringFoxSwaggerDocketFactoryBean implements FactoryBean<Docket> {
     this.groupName = groupName;
   }
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName, Map<String, String> httpHeaderParams) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams) {
     this(basePackage, groupName);
     this.httpHeaderParams = httpHeaderParams;
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , Map<String, String> httpHeaderParams
-    , Map<String, String> httpBodyParams) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams,
+                                           Map<String, String> httpBodyParams) {
     this(basePackage, groupName, httpHeaderParams);
     this.httpBodyParams = httpBodyParams;
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , Map<String, String> httpHeaderParams
-    , Map<String, String> httpBodyParams
-    , Map<String, String> httpQueryParams) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams,
+                                           Map<String, String> httpBodyParams,
+                                           Map<String, String> httpQueryParams) {
     this(basePackage, groupName, httpHeaderParams, httpBodyParams);
     this.httpQueryParams = httpQueryParams;
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , Map<String, String> httpHeaderParams
-    , Map<String, String> httpBodyParams
-    , Map<String, String> httpQueryParams
-    , Map<String, String> httpCookieParams) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams,
+                                           Map<String, String> httpBodyParams,
+                                           Map<String, String> httpQueryParams,
+                                           Map<String, String> httpCookieParams) {
     this(basePackage, groupName, httpHeaderParams, httpBodyParams, httpQueryParams);
     this.httpCookieParams = httpCookieParams;
   }
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName, String... params) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           String... params) {
     this(basePackage, groupName);
     this.httpHeaderParams = new TreeMap<>();
-    for (int i = 0; i < params.length; i++) {
-      this.httpHeaderParams.put(params[i], params[i]);
+    for (String param : params) {
+      this.httpHeaderParams.put(param, param);
     }
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , Map<String, String> httpHeaderParams, String... params) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams,
+                                           String... params) {
     this(basePackage, groupName, httpHeaderParams);
     this.httpBodyParams = new TreeMap<>();
-    for (int i = 0; i < params.length; i++) {
-      this.httpBodyParams.put(params[i], params[i]);
+    for (String param : params) {
+      this.httpBodyParams.put(param, param);
     }
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , Map<String, String> httpHeaderParams
-    , Map<String, String> httpBodyParams, String... params) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams,
+                                           Map<String, String> httpBodyParams,
+                                           String... params) {
     this(basePackage, groupName, httpHeaderParams, httpBodyParams);
     this.httpQueryParams = new TreeMap<>();
-    for (int i = 0; i < params.length; i++) {
-      this.httpQueryParams.put(params[i], params[i]);
+    for (String param : params) {
+      this.httpQueryParams.put(param, param);
     }
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , Map<String, String> httpHeaderParams
-    , Map<String, String> httpBodyParams
-    , Map<String, String> httpQueryParams, String... params) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           Map<String, String> httpHeaderParams,
+                                           Map<String, String> httpBodyParams,
+                                           Map<String, String> httpQueryParams,
+                                           String... params) {
     this(basePackage, groupName, httpHeaderParams, httpBodyParams, httpQueryParams);
     this.httpCookieParams = new TreeMap<>();
-    for (int i = 0; i < params.length; i++) {
-      this.httpCookieParams.put(params[i], params[i]);
+    for (String param : params) {
+      this.httpCookieParams.put(param, param);
     }
   }
 
 
-  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName
-    , List<String> headerParams
-    , List<String> bodyParams
-    , List<String> queryParams
-    , List<String> cookieParams) {
+  public SpringFoxSwaggerDocketFactoryBean(String basePackage, String groupName,
+                                           List<String> headerParams,
+                                           List<String> bodyParams,
+                                           List<String> queryParams,
+                                           List<String> cookieParams) {
+    this(basePackage, groupName);
 
     if (headerParams != null) {
       this.httpHeaderParams = new TreeMap<>();
-      headerParams.forEach(str -> {
+      for (String str : headerParams) {
         this.httpHeaderParams.put(str, str);
-      });
+      }
     }
 
     if (bodyParams != null) {
       this.httpBodyParams = new TreeMap<>();
-      bodyParams.forEach(str -> {
+      for (String str : bodyParams) {
         this.httpBodyParams.put(str, str);
-      });
+      }
     }
 
     if (queryParams != null) {
       this.httpQueryParams = new TreeMap<>();
-      queryParams.forEach(str -> {
+      for (String str : queryParams) {
         this.httpQueryParams.put(str, str);
-      });
+      }
     }
 
     if (cookieParams != null) {
       this.httpCookieParams = new TreeMap<>();
-      cookieParams.forEach(str -> {
+      for (String str : cookieParams) {
         this.httpCookieParams.put(str, str);
-      });
+      }
     }
-    
+
   }
 
   @Override
@@ -147,56 +153,56 @@ public class SpringFoxSwaggerDocketFactoryBean implements FactoryBean<Docket> {
     List<Parameter> pars = new ArrayList<>();
     if (httpHeaderParams != null) {
       httpHeaderParams.keySet().forEach(str -> {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        tokenPar.name(str)
-          .description(httpHeaderParams.get(str))
-          .modelRef(new ModelRef("string"))
-          .parameterType("header")
-          .required(false)
-          .build();
-        pars.add(tokenPar.build());
+        pars.add(
+          new ParameterBuilder().name(str)
+            .description(httpHeaderParams.get(str))
+            .modelRef(new ModelRef("string"))
+            .parameterType("header")
+            .required(false)
+            .build()
+        );
       });
     }
 
 
     if (httpBodyParams != null) {
       httpBodyParams.keySet().forEach(str -> {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        tokenPar.name(str)
-          .description(httpBodyParams.get(str))
-          .modelRef(new ModelRef("string"))
-          .parameterType("body")
-          .required(false)
-          .build();
-        pars.add(tokenPar.build());
+        pars.add(
+          new ParameterBuilder().name(str)
+            .description(httpBodyParams.get(str))
+            .modelRef(new ModelRef("string"))
+            .parameterType("body")
+            .required(false)
+            .build()
+        );
       });
     }
 
 
     if (httpQueryParams != null) {
       httpQueryParams.keySet().forEach(str -> {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        tokenPar.name(str)
-          .description(httpQueryParams.get(str))
-          .modelRef(new ModelRef("string"))
-          .parameterType("query")
-          .required(false)
-          .build();
-        pars.add(tokenPar.build());
+        pars.add(
+          new ParameterBuilder().name(str)
+            .description(httpQueryParams.get(str))
+            .modelRef(new ModelRef("string"))
+            .parameterType("query")
+            .required(false)
+            .build()
+        );
       });
     }
 
 
     if (httpCookieParams != null) {
       httpCookieParams.keySet().forEach(str -> {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        tokenPar.name(str)
-          .description(httpCookieParams.get(str))
-          .modelRef(new ModelRef("string"))
-          .parameterType("cookie")
-          .required(false)
-          .build();
-        pars.add(tokenPar.build());
+        pars.add(
+          new ParameterBuilder().name(str)
+            .description(httpCookieParams.get(str))
+            .modelRef(new ModelRef("string"))
+            .parameterType("cookie")
+            .required(false)
+            .build()
+        );
       });
     }
 
