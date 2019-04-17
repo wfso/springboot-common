@@ -39,7 +39,7 @@ public class DefaultSmsConfig {
   }
 
   @Bean
-  public ISmsSender smsSender() {
+  public DefaultSmsSender smsSender() {
     return new DefaultSmsSender();
   }
 }

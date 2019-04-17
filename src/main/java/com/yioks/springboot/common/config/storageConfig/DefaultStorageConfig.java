@@ -40,7 +40,7 @@ public class DefaultStorageConfig {
   }
 
   @Bean
-  IStorage defaultStorage() {
+  DefaultStorage defaultStorage() {
     return new DefaultStorage();
   }
 }
