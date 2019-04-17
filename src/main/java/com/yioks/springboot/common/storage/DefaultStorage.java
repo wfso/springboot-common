@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 public class DefaultStorage implements IStorage, BeanPostProcessor {
 
-  @Autowired
+  @Autowired(required = false)
   private IConfigurationService configurationService;
 
   @Autowired
@@ -45,7 +45,10 @@ public class DefaultStorage implements IStorage, BeanPostProcessor {
   }
 
   private void clear() {
-    type = configurationService.getConfig("storage.type");
+    type = null;
+    if (configurationService != null) {
+      type = configurationService.getConfig("storage.type");
+    }
     if (StringUtils.isEmpty(type)) {
       type = storageProperties.getType();
     }

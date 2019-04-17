@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 
 public class LocalStorageProvider implements IStorageProvider {
 
-  @Autowired
+  @Autowired(required = false)
   private IConfigurationService configurationService;
 
   @Autowired
@@ -26,11 +26,15 @@ public class LocalStorageProvider implements IStorageProvider {
   @Override
   public IStorage getStorage() {
     if (storage == null) {
-      String filePath = configurationService.getConfig("storage.local.filePath");
+      String filePath = null, prefixUrl = null;
+      if (configurationService != null) {
+        filePath = configurationService.getConfig("storage.local.filePath");
+        prefixUrl = configurationService.getConfig("storage.local.prefixUrl");
+      }
       if (StringUtils.isEmpty(filePath)) {
         filePath = storageProperties.getFilePath();
       }
-      String prefixUrl = configurationService.getConfig("storage.local.prefixUrl");
+
       if (StringUtils.isEmpty(prefixUrl)) {
         prefixUrl = storageProperties.getPrefixUrl();
       }

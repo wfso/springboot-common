@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class AliyunSmsProvider implements ISmsProvider {
 
-  @Autowired
+  @Autowired(required = false)
   private IConfigurationService configurationService;
 
   @Autowired
@@ -35,32 +35,41 @@ public class AliyunSmsProvider implements ISmsProvider {
   @Override
   public ISmsSender getSender() {
     if (smsSender == null) {
-      String accessKeyId = configurationService.getConfig("sms.aliyun.accessKeyId");
+      String accessKeyId = null, accessKeySecret = null, signName = null, domain = null, version = null, action = null;
+      if (configurationService != null) {
+        accessKeyId = configurationService.getConfig("sms.aliyun.accessKeyId");
+        accessKeySecret = configurationService.getConfig("sms.aliyun.accessKeySecret");
+        signName = configurationService.getConfig("sms.aliyun.signName");
+        domain = configurationService.getConfig("sms.aliyun.domain");
+        version = configurationService.getConfig("sms.aliyun.version");
+        action = configurationService.getConfig("sms.aliyun.action");
+      }
+
       if (StringUtils.isEmpty(accessKeyId)) {
         accessKeyId = smsProperties.getAccessKeyId();
         Assert.isTrue(!StringUtils.isEmpty(accessKeyId), "请配置阿里云短信");
       }
-      String accessKeySecret = configurationService.getConfig("sms.aliyun.accessKeySecret");
+
       if (StringUtils.isEmpty(accessKeySecret)) {
         accessKeySecret = smsProperties.getAccessKeySecret();
         Assert.isTrue(!StringUtils.isEmpty(accessKeySecret), "请配置阿里云短信");
       }
-      String signName = configurationService.getConfig("sms.aliyun.signName");
+
       if (StringUtils.isEmpty(signName)) {
         signName = smsProperties.getSignName();
         Assert.isTrue(!StringUtils.isEmpty(signName), "请配置阿里云短信");
       }
-      String domain = configurationService.getConfig("sms.aliyun.domain");
+
       if (StringUtils.isEmpty(domain)) {
         domain = smsProperties.getDomain();
         Assert.isTrue(!StringUtils.isEmpty(domain), "请配置阿里云短信");
       }
-      String version = configurationService.getConfig("sms.aliyun.version");
+
       if (StringUtils.isEmpty(version)) {
         version = smsProperties.getVersion();
         Assert.isTrue(!StringUtils.isEmpty(version), "请配置阿里云短信");
       }
-      String action = configurationService.getConfig("sms.aliyun.action");
+
       if (StringUtils.isEmpty(action)) {
         action = smsProperties.getAction();
         Assert.isTrue(!StringUtils.isEmpty(action), "请配置阿里云短信");

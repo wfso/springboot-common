@@ -21,7 +21,7 @@ public class DefaultSmsSender implements ISmsSender, BeanPostProcessor {
   @Autowired
   private SmsProperties smsProperties;
 
-  @Autowired
+  @Autowired(required = false)
   private IConfigurationService configurationService;
 
   @Autowired(required = false)
@@ -45,7 +45,10 @@ public class DefaultSmsSender implements ISmsSender, BeanPostProcessor {
   }
 
   public ISmsResult sendSms(String phone, String template, Map<String, String> vars, String type) {
-    boolean flag = configurationService.getBooleanConfigure("sms.enable", true);
+    boolean flag = true;
+    if (configurationService != null) {
+      flag = configurationService.getBooleanConfigure("sms.enable", true);
+    }
     if (flag) {
       for (ISmsProvider provider : providers) {
         if (provider.supports(type)) {
@@ -62,7 +65,10 @@ public class DefaultSmsSender implements ISmsSender, BeanPostProcessor {
   }
 
   private void clear() {
-    type = configurationService.getConfig("sms.type");
+    type = null;
+    if (configurationService != null) {
+      type = configurationService.getConfig("sms.type");
+    }
     if (StringUtils.isEmpty(type)) {
       type = smsProperties.getType();
     }

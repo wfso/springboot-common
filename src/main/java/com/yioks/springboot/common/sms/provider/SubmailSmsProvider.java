@@ -21,7 +21,7 @@ public class SubmailSmsProvider implements ISmsProvider {
   @Autowired
   private RestTemplate restTemplate;
 
-  @Autowired
+  @Autowired(required = false)
   private IConfigurationService configurationService;
 
   @Autowired
@@ -32,22 +32,28 @@ public class SubmailSmsProvider implements ISmsProvider {
   @Override
   public ISmsSender getSender() {
     if (smsSender == null) {
-      String appId = configurationService.getConfig("sms.submail.appId");
+      String appId = null, appKey = null, smsUrl = null, timestampUrl = null;
+      if (configurationService != null) {
+        appId = configurationService.getConfig("sms.submail.appId");
+        appKey = configurationService.getConfig("sms.submail.appKey");
+        smsUrl = configurationService.getConfig("sms.submail.smsUrl");
+        timestampUrl = configurationService.getConfig("sms.submail.appKey");
+      }
+
       if (StringUtils.isEmpty(appId)) {
         appId = smsProperties.getAppId();
         Assert.isTrue(!StringUtils.isEmpty(appId), "请配置Submail短信");
       }
-      String appKey = configurationService.getConfig("sms.submail.appKey");
+
       if (StringUtils.isEmpty(appKey)) {
         appKey = smsProperties.getAppKey();
         Assert.isTrue(!StringUtils.isEmpty(appKey), "请配置Submail短信");
       }
-      String smsUrl = configurationService.getConfig("sms.submail.smsUrl");
+
       if (StringUtils.isEmpty(smsUrl)) {
         smsUrl = smsProperties.getSmsUrl();
         Assert.isTrue(!StringUtils.isEmpty(smsUrl), "请配置Submail短信");
       }
-      String timestampUrl = configurationService.getConfig("sms.submail.appKey");
       if (StringUtils.isEmpty(timestampUrl)) {
         timestampUrl = smsProperties.getTimestampUrl();
         Assert.isTrue(!StringUtils.isEmpty(timestampUrl), "请配置Submail短信");

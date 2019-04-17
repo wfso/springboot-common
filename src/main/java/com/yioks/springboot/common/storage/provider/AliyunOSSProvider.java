@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 public class AliyunOSSProvider implements IStorageProvider {
 
-  @Autowired
+  @Autowired(required = false)
   private IConfigurationService configurationService;
 
   @Autowired
@@ -26,31 +26,34 @@ public class AliyunOSSProvider implements IStorageProvider {
   @Override
   public IStorage getStorage() {
     if (storage == null) {
-      String endpoint = configurationService.getConfig("storage.aliyun.endpoint");
+      String endpoint = null, outside = null, accessKeyId = null, accessKeySecret = null, bucket = null;
+      if (configurationService != null) {
+        endpoint = configurationService.getConfig("storage.aliyun.endpoint");
+        outside = configurationService.getConfig("storage.aliyun.outside");
+        accessKeyId = configurationService.getConfig("storage.aliyun.accessKeyId");
+        accessKeySecret = configurationService.getConfig("storage.aliyun.accessKeySecret");
+        bucket = configurationService.getConfig("storage.aliyun.bucket");
+      }
       if (StringUtils.isEmpty(endpoint)) {
         endpoint = storageProperties.getEndpoint();
         Assert.isTrue(!StringUtils.isEmpty(endpoint), "请配置阿里云OSS存储");
       }
 
-      String outside = configurationService.getConfig("storage.aliyun.outside");
       if (StringUtils.isEmpty(outside)) {
         outside = storageProperties.getOutside();
         Assert.isTrue(!StringUtils.isEmpty(outside), "请配置阿里云OSS存储");
       }
 
-      String accessKeyId = configurationService.getConfig("storage.aliyun.accessKeyId");
       if (StringUtils.isEmpty(accessKeyId)) {
         accessKeyId = storageProperties.getAccessKeyId();
         Assert.isTrue(!StringUtils.isEmpty(accessKeyId), "请配置阿里云OSS存储");
       }
 
-      String accessKeySecret = configurationService.getConfig("storage.aliyun.accessKeySecret");
       if (StringUtils.isEmpty(accessKeySecret)) {
         accessKeySecret = storageProperties.getAccessKeySecret();
         Assert.isTrue(!StringUtils.isEmpty(accessKeySecret), "请配置阿里云OSS存储");
       }
 
-      String bucket = configurationService.getConfig("storage.aliyun.bucket");
       if (StringUtils.isEmpty(bucket)) {
         bucket = storageProperties.getBucket();
         Assert.isTrue(!StringUtils.isEmpty(bucket), "请配置阿里云OSS存储");
