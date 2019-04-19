@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.utils;
 
-import org.apache.shiro.codec.CodecSupport;
+import com.yioks.springboot.common.codec.CodecSupport;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -98,12 +98,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signMd2Hex(InputStream data, String encodedPrivateKey) {
+  public static String signMd2Hex(InputStream data, String encodedPrivateKey) {
     return signMd2Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signMd2Hex(File data, String encodedPrivateKey) {
+  public static String signMd2Hex(File data, String encodedPrivateKey) {
     return signMd2Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -134,12 +134,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signMd2B64(InputStream data, String encodedPrivateKey) {
+  public static String signMd2B64(InputStream data, String encodedPrivateKey) {
     return signMd2B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signMd2B64(File data, String encodedPrivateKey) {
+  public static String signMd2B64(File data, String encodedPrivateKey) {
     return signMd2B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -178,12 +178,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signMd5Hex(InputStream data, String encodedPrivateKey) {
+  public static String signMd5Hex(InputStream data, String encodedPrivateKey) {
     return signMd5Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signMd5Hex(File data, String encodedPrivateKey) {
+  public static String signMd5Hex(File data, String encodedPrivateKey) {
     return signMd5Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -214,12 +214,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signMd5B64(InputStream data, String encodedPrivateKey) {
+  public static String signMd5B64(InputStream data, String encodedPrivateKey) {
     return signMd5B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signMd5B64(File data, String encodedPrivateKey) {
+  public static String signMd5B64(File data, String encodedPrivateKey) {
     return signMd5B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -258,12 +258,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha1Hex(InputStream data, String encodedPrivateKey) {
+  public static String signSha1Hex(InputStream data, String encodedPrivateKey) {
     return signSha1Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha1Hex(File data, String encodedPrivateKey) {
+  public static String signSha1Hex(File data, String encodedPrivateKey) {
     return signSha1Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -294,12 +294,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha1B64(InputStream data, String encodedPrivateKey) {
+  public static String signSha1B64(InputStream data, String encodedPrivateKey) {
     return signSha1B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha1B64(File data, String encodedPrivateKey) {
+  public static String signSha1B64(File data, String encodedPrivateKey) {
     return signSha1B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -338,12 +338,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha224Hex(InputStream data, String encodedPrivateKey) {
+  public static String signSha224Hex(InputStream data, String encodedPrivateKey) {
     return signSha224Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha224Hex(File data, String encodedPrivateKey) {
+  public static String signSha224Hex(File data, String encodedPrivateKey) {
     return signSha224Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -374,12 +374,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha224B64(InputStream data, String encodedPrivateKey) {
+  public static String signSha224B64(InputStream data, String encodedPrivateKey) {
     return signSha224B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha224B64(File data, String encodedPrivateKey) {
+  public static String signSha224B64(File data, String encodedPrivateKey) {
     return signSha224B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -418,12 +418,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha256Hex(InputStream data, String encodedPrivateKey) {
+  public static String signSha256Hex(InputStream data, String encodedPrivateKey) {
     return signSha256Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha256Hex(File data, String encodedPrivateKey) {
+  public static String signSha256Hex(File data, String encodedPrivateKey) {
     return signSha256Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -454,12 +454,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha256B64(InputStream data, String encodedPrivateKey) {
+  public static String signSha256B64(InputStream data, String encodedPrivateKey) {
     return signSha256B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha256B64(File data, String encodedPrivateKey) {
+  public static String signSha256B64(File data, String encodedPrivateKey) {
     return signSha256B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -498,12 +498,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha384Hex(InputStream data, String encodedPrivateKey) {
+  public static String signSha384Hex(InputStream data, String encodedPrivateKey) {
     return signSha384Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha384Hex(File data, String encodedPrivateKey) {
+  public static String signSha384Hex(File data, String encodedPrivateKey) {
     return signSha384Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -534,12 +534,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha384B64(InputStream data, String encodedPrivateKey) {
+  public static String signSha384B64(InputStream data, String encodedPrivateKey) {
     return signSha384B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha384B64(File data, String encodedPrivateKey) {
+  public static String signSha384B64(File data, String encodedPrivateKey) {
     return signSha384B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -578,12 +578,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha512Hex(InputStream data, String encodedPrivateKey) {
+  public static String signSha512Hex(InputStream data, String encodedPrivateKey) {
     return signSha512Hex(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha512Hex(File data, String encodedPrivateKey) {
+  public static String signSha512Hex(File data, String encodedPrivateKey) {
     return signSha512Hex(toBytes(data), encodedPrivateKey);
   }
 
@@ -614,12 +614,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public String signSha512B64(InputStream data, String encodedPrivateKey) {
+  public static String signSha512B64(InputStream data, String encodedPrivateKey) {
     return signSha512B64(toBytes(data), encodedPrivateKey);
   }
 
 
-  public String signSha512B64(File data, String encodedPrivateKey) {
+  public static String signSha512B64(File data, String encodedPrivateKey) {
     return signSha512B64(toBytes(data), encodedPrivateKey);
   }
 
@@ -678,12 +678,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifyMd2Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd2Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifyMd2Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifyMd2Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd2Hex(File data, String sign, String encodedPublicKey) {
     return verifyMd2Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -713,12 +713,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifyMd2B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd2B64(InputStream data, String sign, String encodedPublicKey) {
     return verifyMd2B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifyMd2B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd2B64(File data, String sign, String encodedPublicKey) {
     return verifyMd2B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -755,12 +755,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifyMd5Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd5Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifyMd5Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifyMd5Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd5Hex(File data, String sign, String encodedPublicKey) {
     return verifyMd5Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -790,12 +790,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifyMd5B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd5B64(InputStream data, String sign, String encodedPublicKey) {
     return verifyMd5B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifyMd5B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifyMd5B64(File data, String sign, String encodedPublicKey) {
     return verifyMd5B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -832,12 +832,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha1Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha1Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifySha1Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha1Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha1Hex(File data, String sign, String encodedPublicKey) {
     return verifySha1Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -867,12 +867,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha1B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha1B64(InputStream data, String sign, String encodedPublicKey) {
     return verifySha1B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha1B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha1B64(File data, String sign, String encodedPublicKey) {
     return verifySha1B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -909,12 +909,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha224Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha224Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifySha224Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha224Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha224Hex(File data, String sign, String encodedPublicKey) {
     return verifySha224Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -944,12 +944,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha224B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha224B64(InputStream data, String sign, String encodedPublicKey) {
     return verifySha224B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha224B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha224B64(File data, String sign, String encodedPublicKey) {
     return verifySha224B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -986,12 +986,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha256Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha256Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifySha256Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha256Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha256Hex(File data, String sign, String encodedPublicKey) {
     return verifySha256Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -1021,12 +1021,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha256B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha256B64(InputStream data, String sign, String encodedPublicKey) {
     return verifySha256B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha256B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha256B64(File data, String sign, String encodedPublicKey) {
     return verifySha256B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -1063,12 +1063,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha384Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha384Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifySha384Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha384Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha384Hex(File data, String sign, String encodedPublicKey) {
     return verifySha384Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -1098,12 +1098,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha384B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha384B64(InputStream data, String sign, String encodedPublicKey) {
     return verifySha384B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha384B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha384B64(File data, String sign, String encodedPublicKey) {
     return verifySha384B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -1140,12 +1140,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha512Hex(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha512Hex(InputStream data, String sign, String encodedPublicKey) {
     return verifySha512Hex(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha512Hex(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha512Hex(File data, String sign, String encodedPublicKey) {
     return verifySha512Hex(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -1175,12 +1175,12 @@ public class RsaUtil extends CodecSupport {
   }
 
 
-  public boolean verifySha512B64(InputStream data, String sign, String encodedPublicKey) {
+  public static boolean verifySha512B64(InputStream data, String sign, String encodedPublicKey) {
     return verifySha512B64(toBytes(data), sign, encodedPublicKey);
   }
 
 
-  public boolean verifySha512B64(File data, String sign, String encodedPublicKey) {
+  public static boolean verifySha512B64(File data, String sign, String encodedPublicKey) {
     return verifySha512B64(toBytes(data), sign, encodedPublicKey);
   }
 
@@ -1227,11 +1227,11 @@ public class RsaUtil extends CodecSupport {
     return encrypt(toBytes(data, encoding), encodedPublicKey);
   }
 
-  public byte[] encrypt(InputStream data, String encodedPublicKey) {
+  public static byte[] encrypt(InputStream data, String encodedPublicKey) {
     return encrypt(toBytes(data), encodedPublicKey);
   }
 
-  public byte[] encrypt(File data, String encodedPublicKey) {
+  public static byte[] encrypt(File data, String encodedPublicKey) {
     return encrypt(toBytes(data), encodedPublicKey);
   }
 
@@ -1261,11 +1261,11 @@ public class RsaUtil extends CodecSupport {
     return encryptHex(toBytes(data, encoding), encodedPublicKey);
   }
 
-  public String encryptHex(InputStream data, String encodedPublicKey) {
+  public static String encryptHex(InputStream data, String encodedPublicKey) {
     return encryptHex(toBytes(data), encodedPublicKey);
   }
 
-  public String encryptHex(File data, String encodedPublicKey) {
+  public static String encryptHex(File data, String encodedPublicKey) {
     return encryptHex(toBytes(data), encodedPublicKey);
   }
 
@@ -1295,11 +1295,11 @@ public class RsaUtil extends CodecSupport {
     return encryptB64(toBytes(data, encoding), encodedPublicKey);
   }
 
-  public String encryptB64(InputStream data, String encodedPublicKey) {
+  public static String encryptB64(InputStream data, String encodedPublicKey) {
     return encryptB64(toBytes(data), encodedPublicKey);
   }
 
-  public String encryptB64(File data, String encodedPublicKey) {
+  public static String encryptB64(File data, String encodedPublicKey) {
     return encryptB64(toBytes(data), encodedPublicKey);
   }
 
@@ -1340,11 +1340,11 @@ public class RsaUtil extends CodecSupport {
     return new String(decrypt(data,encodedPrivateKey),encoding);
   }
 
-  public byte[] decrypt(InputStream data, String encodedPrivateKey) {
+  public static byte[] decrypt(InputStream data, String encodedPrivateKey) {
     return decrypt(toBytes(data), encodedPrivateKey);
   }
 
-  public byte[] decrypt(File data, String encodedPrivateKey) {
+  public static byte[] decrypt(File data, String encodedPrivateKey) {
     return decrypt(toBytes(data), encodedPrivateKey);
   }
 
