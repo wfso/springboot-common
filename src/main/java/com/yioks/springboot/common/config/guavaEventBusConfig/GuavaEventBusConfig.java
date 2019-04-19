@@ -11,23 +11,25 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 @Configuration
 public class GuavaEventBusConfig {
-    /**
-     * 同步的eventBus，方便进行一些跨模块的处理
-     * @return EventBus
-     */
-    @Bean
-    public EventBus eventBus() {
-        return new EventBus();
-    }
+  /**
+   * 同步的eventBus，方便进行一些跨模块的处理
+   *
+   * @return EventBus
+   */
+  @Bean
+  public EventBus eventBus() {
+    return new EventBus();
+  }
 
-    /**
-     * 异步的eventBus
-     * @return AsyncEventBus
-     */
-    @Bean
-    @Qualifier("asyncEventBus")
-    public EventBus asyncEventBus(){
-        ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(100);
-        return new AsyncEventBus(executor);
-    }
+  /**
+   * 异步的eventBus
+   *
+   * @return AsyncEventBus
+   */
+  @Bean
+  @Qualifier("asyncEventBus")
+  public EventBus asyncEventBus() {
+    ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(100);
+    return new AsyncEventBus(executor);
+  }
 }
