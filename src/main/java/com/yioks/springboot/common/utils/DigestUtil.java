@@ -1,6 +1,7 @@
 package com.yioks.springboot.common.utils;
 
-import org.apache.shiro.codec.CodecSupport;
+
+import com.yioks.springboot.common.codec.CodecSupport;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.File;
@@ -49,11 +50,11 @@ public class DigestUtil extends CodecSupport {
     return md2(toBytes(string, encoding));
   }
 
-  public byte[] md2(InputStream inputStream) {
+  public static byte[] md2(InputStream inputStream) {
     return md2(toBytes(inputStream));
   }
 
-  public byte[] md2(File file) {
+  public static byte[] md2(File file) {
     return md2(toBytes(file));
   }
 
@@ -85,11 +86,11 @@ public class DigestUtil extends CodecSupport {
     return md2Hex(toBytes(string, encoding));
   }
 
-  public String md2Hex(InputStream inputStream) {
+  public static String md2Hex(InputStream inputStream) {
     return md2Hex(toBytes(inputStream));
   }
 
-  public String md2Hex(File file) {
+  public static String md2Hex(File file) {
     return md2Hex(toBytes(file));
   }
 
@@ -121,11 +122,11 @@ public class DigestUtil extends CodecSupport {
     return md2B64(toBytes(string, encoding));
   }
 
-  public String md2B64(InputStream inputStream) {
+  public static String md2B64(InputStream inputStream) {
     return md2B64(toBytes(inputStream));
   }
 
-  public String md2B64(File file) {
+  public static String md2B64(File file) {
     return md2B64(toBytes(file));
   }
 
@@ -157,12 +158,12 @@ public class DigestUtil extends CodecSupport {
   }
 
 
-  public byte[] md5(InputStream inputStream) {
+  public static byte[] md5(InputStream inputStream) {
     return md5(toBytes(inputStream));
   }
 
 
-  public byte[] md5(File file) {
+  public static byte[] md5(File file) {
     return md5(toBytes(file));
   }
 
@@ -195,12 +196,12 @@ public class DigestUtil extends CodecSupport {
   }
 
 
-  public String md5Hex(InputStream inputStream) {
+  public static String md5Hex(InputStream inputStream) {
     return md5Hex(toBytes(inputStream));
   }
 
 
-  public String md5Hex(File file) {
+  public static String md5Hex(File file) {
     return md5Hex(toBytes(file));
   }
 
@@ -233,12 +234,12 @@ public class DigestUtil extends CodecSupport {
   }
 
 
-  public String md5B64(InputStream inputStream) {
+  public static String md5B64(InputStream inputStream) {
     return md5B64(toBytes(inputStream));
   }
 
 
-  public String md5B64(File file) {
+  public static String md5B64(File file) {
     return md5B64(toBytes(file));
   }
 
@@ -268,11 +269,11 @@ public class DigestUtil extends CodecSupport {
     return sha1(toBytes(string, encoding));
   }
 
-  public byte[] sha1(InputStream inputStream) {
+  public static byte[] sha1(InputStream inputStream) {
     return sha1(toBytes(inputStream));
   }
 
-  public byte[] sha1(File file) {
+  public static byte[] sha1(File file) {
     return sha1(toBytes(file));
   }
 
@@ -303,11 +304,11 @@ public class DigestUtil extends CodecSupport {
     return sha1Hex(toBytes(string, encoding));
   }
 
-  public String sha1Hex(InputStream inputStream) {
+  public static String sha1Hex(InputStream inputStream) {
     return sha1Hex(toBytes(inputStream));
   }
 
-  public String sha1Hex(File file) {
+  public static String sha1Hex(File file) {
     return sha1Hex(toBytes(file));
   }
 
@@ -338,11 +339,11 @@ public class DigestUtil extends CodecSupport {
     return sha1B64(toBytes(string, encoding));
   }
 
-  public String sha1B64(InputStream inputStream) {
+  public static String sha1B64(InputStream inputStream) {
     return sha1B64(toBytes(inputStream));
   }
 
-  public String sha1B64(File file) {
+  public static String sha1B64(File file) {
     return sha1B64(toBytes(file));
   }
 
@@ -372,11 +373,11 @@ public class DigestUtil extends CodecSupport {
     return sha224(toBytes(string, encoding));
   }
 
-  public byte[] sha224(InputStream inputStream) {
+  public static byte[] sha224(InputStream inputStream) {
     return sha224(toBytes(inputStream));
   }
 
-  public byte[] sha224(File file) {
+  public static byte[] sha224(File file) {
     return sha224(toBytes(file));
   }
 
@@ -407,11 +408,11 @@ public class DigestUtil extends CodecSupport {
     return sha224Hex(toBytes(string, encoding));
   }
 
-  public String sha224Hex(InputStream inputStream) {
+  public static String sha224Hex(InputStream inputStream) {
     return sha224Hex(toBytes(inputStream));
   }
 
-  public String sha224Hex(File file) {
+  public static String sha224Hex(File file) {
     return sha224Hex(toBytes(file));
   }
 
@@ -442,11 +443,11 @@ public class DigestUtil extends CodecSupport {
     return sha224B64(toBytes(string, encoding));
   }
 
-  public String sha224B64(InputStream inputStream) {
+  public static String sha224B64(InputStream inputStream) {
     return sha224B64(toBytes(inputStream));
   }
 
-  public String sha224B64(File file) {
+  public static String sha224B64(File file) {
     return sha224B64(toBytes(file));
   }
 
@@ -475,11 +476,11 @@ public class DigestUtil extends CodecSupport {
     return sha256(toBytes(string, encoding));
   }
 
-  public byte[] sha256(InputStream inputStream) {
+  public static byte[] sha256(InputStream inputStream) {
     return sha256(toBytes(inputStream));
   }
 
-  public byte[] sha256(File file) {
+  public static byte[] sha256(File file) {
     return sha256(toBytes(file));
   }
 
@@ -509,11 +510,11 @@ public class DigestUtil extends CodecSupport {
     return sha256Hex(toBytes(string, encoding));
   }
 
-  public String sha256Hex(InputStream inputStream) {
+  public static String sha256Hex(InputStream inputStream) {
     return sha256Hex(toBytes(inputStream));
   }
 
-  public String sha256Hex(File file) {
+  public static String sha256Hex(File file) {
     return sha256Hex(toBytes(file));
   }
 
@@ -543,11 +544,11 @@ public class DigestUtil extends CodecSupport {
     return sha256B64(toBytes(string, encoding));
   }
 
-  public String sha256B64(InputStream inputStream) {
+  public static String sha256B64(InputStream inputStream) {
     return sha256B64(toBytes(inputStream));
   }
 
-  public String sha256B64(File file) {
+  public static String sha256B64(File file) {
     return sha256B64(toBytes(file));
   }
 
@@ -576,11 +577,11 @@ public class DigestUtil extends CodecSupport {
     return sha384(toBytes(string, encoding));
   }
 
-  public byte[] sha384(InputStream inputStream) {
+  public static byte[] sha384(InputStream inputStream) {
     return sha384(toBytes(inputStream));
   }
 
-  public byte[] sha384(File file) {
+  public static byte[] sha384(File file) {
     return sha384(toBytes(file));
   }
 
@@ -610,11 +611,11 @@ public class DigestUtil extends CodecSupport {
     return sha384Hex(toBytes(string, encoding));
   }
 
-  public String sha384Hex(InputStream inputStream) {
+  public static String sha384Hex(InputStream inputStream) {
     return sha384Hex(toBytes(inputStream));
   }
 
-  public String sha384Hex(File file) {
+  public static String sha384Hex(File file) {
     return sha384Hex(toBytes(file));
   }
 
@@ -644,11 +645,11 @@ public class DigestUtil extends CodecSupport {
     return sha384B64(toBytes(string, encoding));
   }
 
-  public String sha384B64(InputStream inputStream) {
+  public static String sha384B64(InputStream inputStream) {
     return sha384B64(toBytes(inputStream));
   }
 
-  public String sha384B64(File file) {
+  public static String sha384B64(File file) {
     return sha384B64(toBytes(file));
   }
 
@@ -677,11 +678,11 @@ public class DigestUtil extends CodecSupport {
     return sha512(toBytes(string, encoding));
   }
 
-  public byte[] sha512(InputStream inputStream) {
+  public static byte[] sha512(InputStream inputStream) {
     return sha512(toBytes(inputStream));
   }
 
-  public byte[] sha512(File file) {
+  public static byte[] sha512(File file) {
     return sha512(toBytes(file));
   }
 
@@ -711,11 +712,11 @@ public class DigestUtil extends CodecSupport {
     return sha512Hex(toBytes(string, encoding));
   }
 
-  public String sha512Hex(InputStream inputStream) {
+  public static String sha512Hex(InputStream inputStream) {
     return sha512Hex(toBytes(inputStream));
   }
 
-  public String sha512Hex(File file) {
+  public static String sha512Hex(File file) {
     return sha512Hex(toBytes(file));
   }
 
@@ -745,11 +746,11 @@ public class DigestUtil extends CodecSupport {
     return sha512B64(toBytes(string, encoding));
   }
 
-  public String sha512B64(InputStream inputStream) {
+  public static String sha512B64(InputStream inputStream) {
     return sha512B64(toBytes(inputStream));
   }
 
-  public String sha512B64(File file) {
+  public static String sha512B64(File file) {
     return sha512B64(toBytes(file));
   }
 

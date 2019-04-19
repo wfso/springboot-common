@@ -1,6 +1,7 @@
 package com.yioks.springboot.common.utils;
 
-import org.apache.shiro.codec.CodecSupport;
+
+import com.yioks.springboot.common.codec.CodecSupport;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -73,20 +74,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public byte[] hmacMd5(InputStream data, InputStream key) {
+  public static byte[] hmacMd5(InputStream data, InputStream key) {
     return hmacMd5(toBytes(data), toBytes(key));
   }
 
 
-  public byte[] hmacMd5(InputStream data, byte[] key) {
+  public static byte[] hmacMd5(InputStream data, byte[] key) {
     return hmacMd5(toBytes(data), key);
   }
 
-  public byte[] hmacMd5(File data, File key) {
+  public static byte[] hmacMd5(File data, File key) {
     return hmacMd5(toBytes(data), toBytes(key));
   }
 
-  public byte[] hmacMd5(File data, byte[] key) {
+  public static byte[] hmacMd5(File data, byte[] key) {
     return hmacMd5(toBytes(data), key);
   }
 
@@ -137,20 +138,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacMd5Hex(InputStream data, InputStream key) {
+  public static String hmacMd5Hex(InputStream data, InputStream key) {
     return hmacMd5Hex(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacMd5Hex(InputStream data, byte[] key) {
+  public static String hmacMd5Hex(InputStream data, byte[] key) {
     return hmacMd5Hex(toBytes(data), key);
   }
 
-  public String hmacMd5Hex(File data, File key) {
+  public static String hmacMd5Hex(File data, File key) {
     return hmacMd5Hex(toBytes(data), toBytes(key));
   }
 
-  public String hmacMd5Hex(File data, byte[] key) {
+  public static String hmacMd5Hex(File data, byte[] key) {
     return hmacMd5Hex(toBytes(data), key);
   }
 
@@ -201,20 +202,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacMd5B64(InputStream data, InputStream key) {
+  public static String hmacMd5B64(InputStream data, InputStream key) {
     return hmacMd5B64(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacMd5B64(InputStream data, byte[] key) {
+  public static String hmacMd5B64(InputStream data, byte[] key) {
     return hmacMd5B64(toBytes(data), key);
   }
 
-  public String hmacMd5B64(File data, File key) {
+  public static String hmacMd5B64(File data, File key) {
     return hmacMd5B64(toBytes(data), toBytes(key));
   }
 
-  public String hmacMd5B64(File data, byte[] key) {
+  public static String hmacMd5B64(File data, byte[] key) {
     return hmacMd5B64(toBytes(data), key);
   }
 
@@ -264,20 +265,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public byte[] hmacSha1(InputStream data, InputStream key) {
+  public static byte[] hmacSha1(InputStream data, InputStream key) {
     return hmacSha1(toBytes(data), toBytes(key));
   }
 
 
-  public byte[] hmacSha1(InputStream data, byte[] key) {
+  public static byte[] hmacSha1(InputStream data, byte[] key) {
     return hmacSha1(toBytes(data), key);
   }
 
-  public byte[] hmacSha1(File data, File key) {
+  public static byte[] hmacSha1(File data, File key) {
     return hmacSha1(toBytes(data), toBytes(key));
   }
 
-  public byte[] hmacSha1(File data, byte[] key) {
+  public static byte[] hmacSha1(File data, byte[] key) {
     return hmacSha1(toBytes(data), key);
   }
 
@@ -329,20 +330,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha1Hex(InputStream data, InputStream key) {
+  public static String hmacSha1Hex(InputStream data, InputStream key) {
     return hmacSha1Hex(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha1Hex(InputStream data, byte[] key) {
+  public static String hmacSha1Hex(InputStream data, byte[] key) {
     return hmacSha1Hex(toBytes(data), key);
   }
 
-  public String hmacSha1Hex(File data, File key) {
+  public static String hmacSha1Hex(File data, File key) {
     return hmacSha1Hex(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha1Hex(File data, byte[] key) {
+  public static String hmacSha1Hex(File data, byte[] key) {
     return hmacSha1Hex(toBytes(data), key);
   }
 
@@ -394,20 +395,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha1B64(InputStream data, InputStream key) {
+  public static String hmacSha1B64(InputStream data, InputStream key) {
     return hmacSha1B64(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha1B64(InputStream data, byte[] key) {
+  public static String hmacSha1B64(InputStream data, byte[] key) {
     return hmacSha1B64(toBytes(data), key);
   }
 
-  public String hmacSha1B64(File data, File key) {
+  public static String hmacSha1B64(File data, File key) {
     return hmacSha1B64(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha1B64(File data, byte[] key) {
+  public static String hmacSha1B64(File data, byte[] key) {
     return hmacSha1B64(toBytes(data), key);
   }
 
@@ -457,20 +458,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public byte[] hmacSha224(InputStream data, InputStream key) {
+  public static byte[] hmacSha224(InputStream data, InputStream key) {
     return hmacSha224(toBytes(data), toBytes(key));
   }
 
 
-  public byte[] hmacSha224(InputStream data, byte[] key) {
+  public static byte[] hmacSha224(InputStream data, byte[] key) {
     return hmacSha224(toBytes(data), key);
   }
 
-  public byte[] hmacSha224(File data, File key) {
+  public static byte[] hmacSha224(File data, File key) {
     return hmacSha224(toBytes(data), toBytes(key));
   }
 
-  public byte[] hmacSha224(File data, byte[] key) {
+  public static byte[] hmacSha224(File data, byte[] key) {
     return hmacSha224(toBytes(data), key);
   }
 
@@ -521,20 +522,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha224Hex(InputStream data, InputStream key) {
+  public static String hmacSha224Hex(InputStream data, InputStream key) {
     return hmacSha224Hex(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha224Hex(InputStream data, byte[] key) {
+  public static String hmacSha224Hex(InputStream data, byte[] key) {
     return hmacSha224Hex(toBytes(data), key);
   }
 
-  public String hmacSha224Hex(File data, File key) {
+  public static String hmacSha224Hex(File data, File key) {
     return hmacSha224Hex(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha224Hex(File data, byte[] key) {
+  public static String hmacSha224Hex(File data, byte[] key) {
     return hmacSha224Hex(toBytes(data), key);
   }
 
@@ -585,20 +586,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha224B64(InputStream data, InputStream key) {
+  public static String hmacSha224B64(InputStream data, InputStream key) {
     return hmacSha224B64(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha224B64(InputStream data, byte[] key) {
+  public static String hmacSha224B64(InputStream data, byte[] key) {
     return hmacSha224B64(toBytes(data), key);
   }
 
-  public String hmacSha224B64(File data, File key) {
+  public static String hmacSha224B64(File data, File key) {
     return hmacSha224B64(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha224B64(File data, byte[] key) {
+  public static String hmacSha224B64(File data, byte[] key) {
     return hmacSha224B64(toBytes(data), key);
   }
 
@@ -649,20 +650,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public byte[] hmacSha256(InputStream data, InputStream key) {
+  public static byte[] hmacSha256(InputStream data, InputStream key) {
     return hmacSha256(toBytes(data), toBytes(key));
   }
 
 
-  public byte[] hmacSha256(InputStream data, byte[] key) {
+  public static byte[] hmacSha256(InputStream data, byte[] key) {
     return hmacSha256(toBytes(data), key);
   }
 
-  public byte[] hmacSha256(File data, File key) {
+  public static byte[] hmacSha256(File data, File key) {
     return hmacSha256(toBytes(data), toBytes(key));
   }
 
-  public byte[] hmacSha256(File data, byte[] key) {
+  public static byte[] hmacSha256(File data, byte[] key) {
     return hmacSha256(toBytes(data), key);
   }
 
@@ -713,20 +714,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha256Hex(InputStream data, InputStream key) {
+  public static String hmacSha256Hex(InputStream data, InputStream key) {
     return hmacSha256Hex(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha256Hex(InputStream data, byte[] key) {
+  public static String hmacSha256Hex(InputStream data, byte[] key) {
     return hmacSha256Hex(toBytes(data), key);
   }
 
-  public String hmacSha256Hex(File data, File key) {
+  public static String hmacSha256Hex(File data, File key) {
     return hmacSha256Hex(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha256Hex(File data, byte[] key) {
+  public static String hmacSha256Hex(File data, byte[] key) {
     return hmacSha256Hex(toBytes(data), key);
   }
 
@@ -777,20 +778,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha256B64(InputStream data, InputStream key) {
+  public static String hmacSha256B64(InputStream data, InputStream key) {
     return hmacSha256B64(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha256B64(InputStream data, byte[] key) {
+  public static String hmacSha256B64(InputStream data, byte[] key) {
     return hmacSha256B64(toBytes(data), key);
   }
 
-  public String hmacSha256B64(File data, File key) {
+  public static String hmacSha256B64(File data, File key) {
     return hmacSha256B64(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha256B64(File data, byte[] key) {
+  public static String hmacSha256B64(File data, byte[] key) {
     return hmacSha256B64(toBytes(data), key);
   }
 
@@ -841,20 +842,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public byte[] hmacSha384(InputStream data, InputStream key) {
+  public static byte[] hmacSha384(InputStream data, InputStream key) {
     return hmacSha384(toBytes(data), toBytes(key));
   }
 
 
-  public byte[] hmacSha384(InputStream data, byte[] key) {
+  public static byte[] hmacSha384(InputStream data, byte[] key) {
     return hmacSha384(toBytes(data), key);
   }
 
-  public byte[] hmacSha384(File data, File key) {
+  public static byte[] hmacSha384(File data, File key) {
     return hmacSha384(toBytes(data), toBytes(key));
   }
 
-  public byte[] hmacSha384(File data, byte[] key) {
+  public static byte[] hmacSha384(File data, byte[] key) {
     return hmacSha384(toBytes(data), key);
   }
 
@@ -905,20 +906,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha384Hex(InputStream data, InputStream key) {
+  public static String hmacSha384Hex(InputStream data, InputStream key) {
     return hmacSha384Hex(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha384Hex(InputStream data, byte[] key) {
+  public static String hmacSha384Hex(InputStream data, byte[] key) {
     return hmacSha384Hex(toBytes(data), key);
   }
 
-  public String hmacSha384Hex(File data, File key) {
+  public static String hmacSha384Hex(File data, File key) {
     return hmacSha384Hex(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha384Hex(File data, byte[] key) {
+  public static String hmacSha384Hex(File data, byte[] key) {
     return hmacSha384Hex(toBytes(data), key);
   }
 
@@ -969,20 +970,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha384B64(InputStream data, InputStream key) {
+  public static String hmacSha384B64(InputStream data, InputStream key) {
     return hmacSha384B64(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha384B64(InputStream data, byte[] key) {
+  public static String hmacSha384B64(InputStream data, byte[] key) {
     return hmacSha384B64(toBytes(data), key);
   }
 
-  public String hmacSha384B64(File data, File key) {
+  public static String hmacSha384B64(File data, File key) {
     return hmacSha384B64(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha384B64(File data, byte[] key) {
+  public static String hmacSha384B64(File data, byte[] key) {
     return hmacSha384B64(toBytes(data), key);
   }
 
@@ -1034,20 +1035,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public byte[] hmacSha512(InputStream data, InputStream key) {
+  public static byte[] hmacSha512(InputStream data, InputStream key) {
     return hmacSha512(toBytes(data), toBytes(key));
   }
 
 
-  public byte[] hmacSha512(InputStream data, byte[] key) {
+  public static byte[] hmacSha512(InputStream data, byte[] key) {
     return hmacSha512(toBytes(data), key);
   }
 
-  public byte[] hmacSha512(File data, File key) {
+  public static byte[] hmacSha512(File data, File key) {
     return hmacSha512(toBytes(data), toBytes(key));
   }
 
-  public byte[] hmacSha512(File data, byte[] key) {
+  public static byte[] hmacSha512(File data, byte[] key) {
     return hmacSha512(toBytes(data), key);
   }
 
@@ -1098,20 +1099,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha512Hex(InputStream data, InputStream key) {
+  public static String hmacSha512Hex(InputStream data, InputStream key) {
     return hmacSha512Hex(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha512Hex(InputStream data, byte[] key) {
+  public static String hmacSha512Hex(InputStream data, byte[] key) {
     return hmacSha512Hex(toBytes(data), key);
   }
 
-  public String hmacSha512Hex(File data, File key) {
+  public static String hmacSha512Hex(File data, File key) {
     return hmacSha512Hex(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha512Hex(File data, byte[] key) {
+  public static String hmacSha512Hex(File data, byte[] key) {
     return hmacSha512Hex(toBytes(data), key);
   }
 
@@ -1162,20 +1163,20 @@ public class MacUtil extends CodecSupport {
   }
 
 
-  public String hmacSha512B64(InputStream data, InputStream key) {
+  public static String hmacSha512B64(InputStream data, InputStream key) {
     return hmacSha512B64(toBytes(data), toBytes(key));
   }
 
 
-  public String hmacSha512B64(InputStream data, byte[] key) {
+  public static String hmacSha512B64(InputStream data, byte[] key) {
     return hmacSha512B64(toBytes(data), key);
   }
 
-  public String hmacSha512B64(File data, File key) {
+  public static String hmacSha512B64(File data, File key) {
     return hmacSha512B64(toBytes(data), toBytes(key));
   }
 
-  public String hmacSha512B64(File data, byte[] key) {
+  public static String hmacSha512B64(File data, byte[] key) {
     return hmacSha512B64(toBytes(data), key);
   }
 
