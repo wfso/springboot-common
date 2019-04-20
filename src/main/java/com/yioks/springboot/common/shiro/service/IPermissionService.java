@@ -5,6 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 
 
 public interface IPermissionService<T extends IPermission> {
+  T getById(long id);
+
   T getByCode(String code);
 
   default boolean isAvailable(T t) {

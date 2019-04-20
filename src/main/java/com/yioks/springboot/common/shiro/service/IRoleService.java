@@ -7,6 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Collection;
 
 public interface IRoleService<T extends IRole> {
+  T getById(long id);
+
   T getByCode(String code);
 
   Collection<? extends IPermission> getPermissionsByRole(T role);
