@@ -5,9 +5,12 @@ import com.yioks.springboot.common.shiro.model.IRole;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface IRoleService<T extends IRole> {
   T getById(long id);
+
+  List<T> getById(Iterable<Long> ids);
 
   T getByCode(String code);
 
