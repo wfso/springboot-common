@@ -13,7 +13,7 @@
 
   <groupId>com.yioks.core</groupId>
   <artifactId>springboot-common</artifactId>
-  <version>v1.2.6</version>
+  <version>v1.2.5</version>
   <packaging>jar</packaging>
 
   <dependencies>
@@ -218,12 +218,12 @@
 
   <distributionManagement>
     <snapshotRepository>
-      <id>yioks-snapshot</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <id>wfso-nexus-snapshot</id>
+      <url>http://nexus.yioks.cn/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
-      <id>yioks-releases</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      <id>wfso-nexus-releases</id>
+      <url>http://nexus.yioks.cn/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
 

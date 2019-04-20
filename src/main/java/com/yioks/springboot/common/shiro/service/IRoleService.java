@@ -9,9 +9,7 @@ import java.util.Collection;
 public interface IRoleService<T extends IRole> {
   T getByCode(String code);
 
-  default Collection<? extends IPermission> getPermissionsByRole(IRole role) {
-    return role.getPermissions();
-  }
+  Collection<? extends IPermission> getPermissionsByRole(T role);
 
   default Collection<? extends IPermission> getPermissionsByRoleCode(String code) {
     return getPermissionsByRole(getByCode(code));

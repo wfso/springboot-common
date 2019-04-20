@@ -21,13 +21,9 @@ public interface IUserService<T extends IUser> extends IAuthenticationService {
     return t != null && t.getIdentification() != null;
   }
 
-  default Collection<? extends IRole> getRolesByUser(IUser user) {
-    return user.getRoles();
-  }
+  Collection<? extends IRole> getRolesByUser(T user);
 
-  default Collection<? extends IPermission> getUserPermission(IUser user) {
-    return user.getPermissions();
-  }
+  Collection<? extends IPermission> getUserPermission(T user);
 
   default Collection<? extends IRole> getRolesByUserIdentification(Object id) {
     return getRolesByUser(getByIdentification(id));
@@ -42,7 +38,7 @@ public interface IUserService<T extends IUser> extends IAuthenticationService {
   }
 
   default Object getLoginUserIdentification() {
-    return ((ShiroPrincipal)SecurityUtils.getSubject().getPrincipal()).getPrincipal();
+    return ((ShiroPrincipal) SecurityUtils.getSubject().getPrincipal()).getPrincipal();
   }
 
   default boolean validateCredentials(String userCredentials, String tokenCredentials) {
