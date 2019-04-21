@@ -12,8 +12,4 @@ public interface IPermissionService<T extends IPermission> {
   List<T> getById(Iterable<Long> ids);
 
   T getByCode(String code);
-
-  default boolean isAvailable(T t) {
-    return t != null && StringUtils.isNotEmpty(t.getCode());
-  }
 }

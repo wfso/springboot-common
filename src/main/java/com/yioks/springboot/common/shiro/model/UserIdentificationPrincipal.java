@@ -1,15 +1,15 @@
 package com.yioks.springboot.common.shiro.model;
 
-public class UserIdentificationPrincipal implements ShiroPrincipal {
+public class UserIdentificationPrincipal implements ShiroPrincipal<Long> {
 
-  private Object userIdentification;
+  private Long userIdentification;
 
-  public UserIdentificationPrincipal(Object userIdentification) {
+  public UserIdentificationPrincipal(Long userIdentification) {
     this.userIdentification = userIdentification;
   }
 
   @Override
-  public Object getPrincipal() {
+  public Long getPrincipal() {
     return userIdentification;
   }
 }

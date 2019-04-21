@@ -1,7 +1,15 @@
 package com.yioks.springboot.common.shiro.model;
 
-public interface IUser {
-  Object getIdentification();
+import javax.persistence.Transient;
+import java.io.Serializable;
+
+public interface IUser extends Serializable {
+  long getIdentification();
 
   String getCredentials();
+
+  @Transient
+  default boolean isAvailable() {
+    return getIdentification() > 0;
+  }
 }

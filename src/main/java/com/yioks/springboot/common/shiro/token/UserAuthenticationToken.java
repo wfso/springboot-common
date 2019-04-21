@@ -4,13 +4,13 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 
 public class UserAuthenticationToken extends UsernamePasswordToken {
 
-  private Object userId;
+  private long userId;
 
-  public Object getUserId() {
+  public long getUserId() {
     return userId;
   }
 
-  public void setUserId(Object userId) {
+  public void setUserId(long userId) {
     this.userId = userId;
   }
 

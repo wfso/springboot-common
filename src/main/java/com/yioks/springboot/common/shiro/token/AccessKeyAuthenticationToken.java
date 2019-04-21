@@ -7,17 +7,17 @@ import java.util.TreeMap;
 
 public class AccessKeyAuthenticationToken implements AuthenticationToken {
 
-  private Object userId;
+  private long userId;
 
   private String password;
 
   private Map<String, String> params = new TreeMap<>();
 
-  public Object getUserId() {
+  public long getUserId() {
     return userId;
   }
 
-  public void setUserId(Object userId) {
+  public void setUserId(long userId) {
     this.userId = userId;
   }
 

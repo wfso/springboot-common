@@ -6,20 +6,15 @@ import com.yioks.springboot.common.shiro.model.UserIdentificationPrincipal;
 import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import com.yioks.springboot.common.utils.MacUtil;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
 
 import java.util.Map;
 
-public interface IAccessKeyService<T extends IAccessKey> extends IAuthenticationService {
-  T getByAccessKeyId(String accessKeyId);
+public abstract class AbstractAccessKeyAuthenticationService extends AbstractAuthenticationService {
 
-  default boolean isAvailable(T t) throws AuthenticationException {
-    return t != null && t.getUserIdentification() != null;
-  }
+  protected abstract IAccessKey getByAccessKeyId(String accessKeyId);
 
-  default boolean supportSignType(String signType) {
+  protected boolean supportSignType(String signType) {
     switch (signType.toLowerCase()) {
       case "hmacsha256":
       case "hmacsha512":
@@ -33,7 +28,7 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
     }
   }
 
-  default String sign(String signType, String signStr, String secret) {
+  protected String sign(String signType, String signStr, String secret) {
     switch (signType.toLowerCase()) {
       case "hmacsha256": {
         return MacUtil.hmacSha256Hex(signStr, secret);
@@ -53,7 +48,7 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
     }
   }
 
-  default String genSignString(Map<String, String> params) throws AuthenticationException {
+  protected String genSignString(Map<String, String> params) throws AuthenticationException {
     StringBuffer buffer = new StringBuffer();
     for (Map.Entry<String, String> entry : params.entrySet()) {
       if (entry.getValue() != null) {
@@ -68,12 +63,14 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
   }
 
   @Override
-  default boolean supports(AuthenticationToken token) {
+  public boolean supports(AuthenticationToken token) {
     return token instanceof AccessKeyAuthenticationToken;
   }
 
+
   @Override
-  default AuthenticationInfo getAuthenticationInfo(AuthenticationToken token, String realmName) {
+  protected Object verifyToken(AuthenticationToken token) throws AuthenticationException {
+
     AccessKeyAuthenticationToken AccessKeyToken = (AccessKeyAuthenticationToken) token;
 
     Map<String, String> params = AccessKeyToken.getParams();
@@ -108,10 +105,10 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
     }
 
     // 根据 accessKeyId 获取 AccessKey
-    T accessKey = getByAccessKeyId(accessKeyId);
+    IAccessKey accessKey = getByAccessKeyId(accessKeyId);
 
     // 没有与 accessKeyId 对应的 AccessKey
-    if (accessKey == null || !isAvailable(accessKey)) {
+    if (accessKey == null || accessKey.isAvailable()) {
       throw new StatelessAuthenticationException("AKE-000003");
     }
 
@@ -129,13 +126,8 @@ public interface IAccessKeyService<T extends IAccessKey> extends IAuthentication
     if (!sign.equalsIgnoreCase(localSign)) {
       throw new StatelessAuthenticationException("AKE-000005");
     }
-    AccessKeyToken.setUserId(new UserIdentificationPrincipal(accessKey.getUserIdentification()));
-    AccessKeyToken.setPassword(MacUtil.hmacSha256Hex(accessKeyId, accessKey.getAccessKeySecret()));
-
-    return new SimpleAuthenticationInfo(
-      AccessKeyToken.getPrincipal(),
-      AccessKeyToken.getCredentials(),
-      realmName
-    );
+    AccessKeyToken.setUserId(accessKey.getUserIdentification());
+    AccessKeyToken.setPassword(localSign);
+    return new UserIdentificationPrincipal(accessKey.getUserIdentification());
   }
 }

@@ -1,7 +1,12 @@
 package com.yioks.springboot.common.shiro.model;
 
 
-public interface IRole {
+import org.apache.commons.lang3.StringUtils;
+
+import javax.persistence.Transient;
+import java.io.Serializable;
+
+public interface IRole extends Serializable {
   long getId();
 
   void setId(long id);
@@ -17,4 +22,9 @@ public interface IRole {
   String getIntro();
 
   void setIntro(String intro);
+
+  @Transient
+  default boolean isAvailable() {
+    return getId() > 0 && StringUtils.isNotBlank(getCode());
+  }
 }

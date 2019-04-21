@@ -19,8 +19,4 @@ public interface IRoleService<T extends IRole> {
   default Collection<? extends IPermission> getPermissionsByRoleCode(String code) {
     return getPermissionsByRole(getByCode(code));
   }
-
-  default boolean isAvailable(T t) {
-    return t != null && StringUtils.isNotEmpty(t.getCode());
-  }
 }

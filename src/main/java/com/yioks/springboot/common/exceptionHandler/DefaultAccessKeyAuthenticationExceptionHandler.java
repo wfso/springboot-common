@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 
-public class DefaultStatelessAuthenticationExceptionHandler extends AbstractAuthenticationExceptionHandler {
+public class DefaultAccessKeyAuthenticationExceptionHandler extends AbstractAuthenticationExceptionHandler {
 
   protected String codeName;
   protected String msgName;
 
-  public DefaultStatelessAuthenticationExceptionHandler(String codeName, String msgName) {
+  public DefaultAccessKeyAuthenticationExceptionHandler(String codeName, String msgName) {
     this.codeName = codeName;
     this.msgName = msgName;
   }
@@ -26,7 +26,7 @@ public class DefaultStatelessAuthenticationExceptionHandler extends AbstractAuth
   }
 
   @ModelAttribute
-  public void statelessLogin(HttpServletRequest request) {
+  public void accesskeyLogin(HttpServletRequest request) {
     AccessKeyAuthenticationToken token = new AccessKeyAuthenticationToken();
     Enumeration<String> enumeration = request.getParameterNames();
     while (enumeration.hasMoreElements()) {
@@ -35,5 +35,4 @@ public class DefaultStatelessAuthenticationExceptionHandler extends AbstractAuth
     }
     SecurityUtils.getSubject().login(token);
   }
-
 }
