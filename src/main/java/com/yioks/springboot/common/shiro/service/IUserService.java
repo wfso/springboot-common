@@ -1,6 +1,7 @@
 package com.yioks.springboot.common.shiro.service;
 
 import com.yioks.springboot.common.shiro.model.*;
+import org.apache.shiro.SecurityUtils;
 
 import java.util.Collection;
 
@@ -15,5 +16,7 @@ public interface IUserService<T extends IUser> {
     return getRolesByUser(getByIdentification(id));
   }
 
-  T getLoginUser();
+  default T getLoginUser() {
+    return (T) SecurityUtils.getSubject().getPrincipal();
+  }
 }

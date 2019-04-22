@@ -2,16 +2,20 @@ package com.yioks.springboot.common.shiro.authentication;
 
 import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
 import com.yioks.springboot.common.shiro.model.IAccessKey;
-import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
-import com.yioks.springboot.common.shiro.model.UserIdentificationPrincipal;
+import com.yioks.springboot.common.shiro.model.IUser;
+import com.yioks.springboot.common.shiro.service.IUserService;
 import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import com.yioks.springboot.common.utils.MacUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
 public abstract class AbstractAccessKeyAuthenticationService extends AbstractAuthenticationService {
+
+  @Autowired
+  private IUserService userService;
 
   protected abstract IAccessKey getByAccessKeyId(String accessKeyId);
 
@@ -70,7 +74,7 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
 
 
   @Override
-  protected ShiroPrincipal verifyToken(AuthenticationToken token) throws AuthenticationException {
+  protected IUser verifyToken(AuthenticationToken token) throws AuthenticationException {
 
     AccessKeyAuthenticationToken AccessKeyToken = (AccessKeyAuthenticationToken) token;
 
@@ -129,6 +133,6 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
     }
     AccessKeyToken.setUserId(accessKey.getUserIdentification());
     AccessKeyToken.setPassword(localSign);
-    return new UserIdentificationPrincipal(accessKey.getUserIdentification());
+    return userService.getByIdentification(accessKey.getUserIdentification());
   }
 }

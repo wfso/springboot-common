@@ -2,11 +2,8 @@ package com.yioks.springboot.common.shiro.authentication;
 
 import com.yioks.springboot.common.shiro.exception.UserAuthenticationException;
 import com.yioks.springboot.common.shiro.model.IUser;
-import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
-import com.yioks.springboot.common.shiro.model.UserIdentificationPrincipal;
 import com.yioks.springboot.common.shiro.token.UserAuthenticationToken;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 
@@ -26,7 +23,7 @@ public abstract class AbstractUserAuthenticationService extends AbstractAuthenti
   }
 
   @Override
-  protected ShiroPrincipal verifyToken(AuthenticationToken token) throws AuthenticationException {
+  protected IUser verifyToken(AuthenticationToken token) throws AuthenticationException {
     UserAuthenticationToken userToken = (UserAuthenticationToken) token;
     if (StringUtils.isEmpty(userToken.getUsername())) {
       throw new UserAuthenticationException("UAE-000001");
@@ -52,10 +49,6 @@ public abstract class AbstractUserAuthenticationService extends AbstractAuthenti
       throw new UserAuthenticationException("UAE-000006");
     }
     userToken.setUserId(user.getIdentification());
-    return new UserIdentificationPrincipal(user.getIdentification());
-  }
-
-  public void login(UserAuthenticationToken token) {
-    SecurityUtils.getSubject().login(token);
+    return user;
   }
 }

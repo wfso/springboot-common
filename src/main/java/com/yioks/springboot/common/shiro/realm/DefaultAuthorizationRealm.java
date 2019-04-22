@@ -1,8 +1,8 @@
 package com.yioks.springboot.common.shiro.realm;
 
-import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
 import com.yioks.springboot.common.shiro.authentication.IAuthenticationService;
 import com.yioks.springboot.common.shiro.authorization.IAuthorizationService;
+import com.yioks.springboot.common.shiro.model.IUser;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -51,11 +51,11 @@ public class DefaultAuthorizationRealm extends AuthorizingRealm implements BeanP
   @Override
   protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
     Object principal = principals.getPrimaryPrincipal();
-    if (principal instanceof ShiroPrincipal) {
-      ShiroPrincipal shiroPrincipal = (ShiroPrincipal) principal;
+    if (principal instanceof IUser) {
+      IUser user = (IUser) principal;
       for (IAuthorizationService authorizationService : authorizationServices) {
-        if (authorizationService.supports(shiroPrincipal)) {
-          return authorizationService.getAuthorizationInfo(shiroPrincipal);
+        if (authorizationService.supports(user)) {
+          return authorizationService.getAuthorizationInfo(user);
         }
       }
     }

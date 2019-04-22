@@ -3,7 +3,6 @@ package com.yioks.springboot.common.shiro.authorization;
 import com.yioks.springboot.common.shiro.model.IPermission;
 import com.yioks.springboot.common.shiro.model.IRole;
 import com.yioks.springboot.common.shiro.model.IUser;
-import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
 import com.yioks.springboot.common.shiro.service.IPermissionService;
 import com.yioks.springboot.common.shiro.service.IRoleService;
 import com.yioks.springboot.common.shiro.service.IUserService;
@@ -13,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 
-public abstract class AbstractAuthorizationService implements IAuthorizationService {
+public class DefaultAuthorizationService implements IAuthorizationService {
 
   @Autowired(required = false)
   protected IUserService userService;
@@ -25,12 +24,16 @@ public abstract class AbstractAuthorizationService implements IAuthorizationServ
   protected IPermissionService permissionService;
 
   @Override
-  public AuthorizationInfo getAuthorizationInfo(ShiroPrincipal shiroPrincipal) {
+  public boolean supports(IUser user) {
+    return true;
+  }
+
+  @Override
+  public AuthorizationInfo getAuthorizationInfo(IUser user) {
     SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
     if (userService == null) {
       return info;
     }
-    IUser user = getUser(shiroPrincipal);
     if (user == null) {
       return info;
     }
