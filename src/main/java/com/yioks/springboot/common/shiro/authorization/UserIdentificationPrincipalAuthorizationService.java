@@ -1,4 +1,4 @@
-package com.yioks.springboot.common.shiro.service;
+package com.yioks.springboot.common.shiro.authorization;
 
 import com.yioks.springboot.common.shiro.model.*;
 
@@ -9,7 +9,7 @@ public class UserIdentificationPrincipalAuthorizationService extends AbstractAut
   }
 
   @Override
-  protected IUser getUser(ShiroPrincipal shiroPrincipal) {
+  public IUser getUser(ShiroPrincipal shiroPrincipal) {
     return userService.getByIdentification(((UserIdentificationPrincipal) shiroPrincipal).getPrincipal());
   }
 }

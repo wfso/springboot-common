@@ -1,7 +1,8 @@
-package com.yioks.springboot.common.shiro.service;
+package com.yioks.springboot.common.shiro.authentication;
 
 import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
 import com.yioks.springboot.common.shiro.model.IAccessKey;
+import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
 import com.yioks.springboot.common.shiro.model.UserIdentificationPrincipal;
 import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import com.yioks.springboot.common.utils.MacUtil;
@@ -69,7 +70,7 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
 
 
   @Override
-  protected Object verifyToken(AuthenticationToken token) throws AuthenticationException {
+  protected ShiroPrincipal verifyToken(AuthenticationToken token) throws AuthenticationException {
 
     AccessKeyAuthenticationToken AccessKeyToken = (AccessKeyAuthenticationToken) token;
 

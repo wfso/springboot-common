@@ -1,8 +1,8 @@
 package com.yioks.springboot.common.shiro.realm;
 
 import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
-import com.yioks.springboot.common.shiro.service.IAuthenticationService;
-import com.yioks.springboot.common.shiro.service.IAuthorizationService;
+import com.yioks.springboot.common.shiro.authentication.IAuthenticationService;
+import com.yioks.springboot.common.shiro.authorization.IAuthorizationService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;

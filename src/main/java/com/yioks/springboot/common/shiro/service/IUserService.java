@@ -14,4 +14,6 @@ public interface IUserService<T extends IUser> {
   default Collection<? extends IRole> getRolesByUserIdentification(Long id) {
     return getRolesByUser(getByIdentification(id));
   }
+
+  T getLoginUser();
 }

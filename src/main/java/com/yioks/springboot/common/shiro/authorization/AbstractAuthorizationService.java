@@ -1,9 +1,12 @@
-package com.yioks.springboot.common.shiro.service;
+package com.yioks.springboot.common.shiro.authorization;
 
 import com.yioks.springboot.common.shiro.model.IPermission;
 import com.yioks.springboot.common.shiro.model.IRole;
 import com.yioks.springboot.common.shiro.model.IUser;
 import com.yioks.springboot.common.shiro.model.ShiroPrincipal;
+import com.yioks.springboot.common.shiro.service.IPermissionService;
+import com.yioks.springboot.common.shiro.service.IRoleService;
+import com.yioks.springboot.common.shiro.service.IUserService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +37,6 @@ public abstract class AbstractAuthorizationService implements IAuthorizationServ
     fillAuthorizationInfo(user, info);
     return info;
   }
-
-  protected abstract IUser getUser(ShiroPrincipal shiroPrincipal);
 
   private void fillAuthorizationInfo(IUser user, SimpleAuthorizationInfo info) {
     Collection<? extends IRole> roles = userService.getRolesByUser(user);

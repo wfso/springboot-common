@@ -3,8 +3,9 @@ package com.yioks.springboot.common.config.shiroConfig;
 import com.yioks.springboot.common.filter.CrossDomainFilter;
 import com.yioks.springboot.common.shiro.factoryBeans.CustomizedSecurityManagerFactoryBean;
 import com.yioks.springboot.common.shiro.realm.DefaultAuthorizationRealm;
-import com.yioks.springboot.common.shiro.service.UserIdentificationPrincipalAuthorizationService;
-import com.yioks.springboot.common.shiro.service.UserPrincipalAuthorizationService;
+import com.yioks.springboot.common.shiro.authorization.UserIdentificationPrincipalAuthorizationService;
+import com.yioks.springboot.common.shiro.authorization.UserPrincipalAuthorizationService;
+import com.yioks.springboot.common.shiro.service.DefaultLoginUserService;
 import com.yioks.springboot.common.shiro.session.utils.DefaultShiroSessionUtil;
 import com.yioks.springboot.common.shiro.session.utils.ISessionUtil;
 import org.apache.shiro.mgt.SecurityManager;
@@ -34,18 +35,23 @@ public class DefaultShiroConfig {
   }
 
   @Bean
-  public UserIdentificationPrincipalAuthorizationService userIdentificationPrincipalAuthorizationService(){
+  public UserIdentificationPrincipalAuthorizationService userIdentificationPrincipalAuthorizationService() {
     return new UserIdentificationPrincipalAuthorizationService();
   }
 
   @Bean
-  public UserPrincipalAuthorizationService userPrincipalAuthorizationService(){
+  public UserPrincipalAuthorizationService userPrincipalAuthorizationService() {
     return new UserPrincipalAuthorizationService();
   }
 
   @Bean
   public ISessionUtil sessionUtil() {
     return new DefaultShiroSessionUtil();
+  }
+
+  @Bean
+  public DefaultLoginUserService defaultLoginUserService() {
+    return new DefaultLoginUserService();
   }
 
   @Bean
