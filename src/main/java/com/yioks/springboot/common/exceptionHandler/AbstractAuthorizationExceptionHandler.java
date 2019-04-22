@@ -1,9 +1,9 @@
 package com.yioks.springboot.common.exceptionHandler;
 
-import com.yioks.springboot.common.shiro.model.IPermission;
-import com.yioks.springboot.common.shiro.model.IRole;
-import com.yioks.springboot.common.shiro.service.IPermissionService;
-import com.yioks.springboot.common.shiro.service.IRoleService;
+import com.yioks.springboot.common.model.IPermission;
+import com.yioks.springboot.common.model.IRole;
+import com.yioks.springboot.common.service.IPermissionService;
+import com.yioks.springboot.common.service.IRoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.shiro.event;
 
-import com.yioks.springboot.common.shiro.model.IUser;
+import com.yioks.springboot.common.model.IUser;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,9 +1,9 @@
 package com.yioks.springboot.common.shiro.authentication;
 
 import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
-import com.yioks.springboot.common.shiro.model.IAccessKey;
-import com.yioks.springboot.common.shiro.model.IUser;
-import com.yioks.springboot.common.shiro.service.IUserService;
+import com.yioks.springboot.common.model.IAccessKey;
+import com.yioks.springboot.common.model.IUser;
+import com.yioks.springboot.common.service.IUserService;
 import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import com.yioks.springboot.common.utils.MacUtil;
 import org.apache.shiro.authc.AuthenticationException;

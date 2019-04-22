@@ -1,6 +1,6 @@
-package com.yioks.springboot.common.shiro.service;
+package com.yioks.springboot.common.service;
 
-import com.yioks.springboot.common.shiro.model.*;
+import com.yioks.springboot.common.model.*;
 import org.apache.shiro.SecurityUtils;
 
 import java.util.Collection;

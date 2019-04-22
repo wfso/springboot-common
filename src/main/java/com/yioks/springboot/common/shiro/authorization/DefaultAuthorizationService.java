@@ -1,11 +1,11 @@
 package com.yioks.springboot.common.shiro.authorization;
 
-import com.yioks.springboot.common.shiro.model.IPermission;
-import com.yioks.springboot.common.shiro.model.IRole;
-import com.yioks.springboot.common.shiro.model.IUser;
-import com.yioks.springboot.common.shiro.service.IPermissionService;
-import com.yioks.springboot.common.shiro.service.IRoleService;
-import com.yioks.springboot.common.shiro.service.IUserService;
+import com.yioks.springboot.common.model.IPermission;
+import com.yioks.springboot.common.model.IRole;
+import com.yioks.springboot.common.model.IUser;
+import com.yioks.springboot.common.service.IPermissionService;
+import com.yioks.springboot.common.service.IRoleService;
+import com.yioks.springboot.common.service.IUserService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.springframework.beans.factory.annotation.Autowired;

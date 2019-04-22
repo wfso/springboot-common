@@ -1,7 +1,7 @@
 package com.yioks.springboot.common.shiro.authentication;
 
 import com.yioks.springboot.common.shiro.exception.UserAuthenticationException;
-import com.yioks.springboot.common.shiro.model.IUser;
+import com.yioks.springboot.common.model.IUser;
 import com.yioks.springboot.common.shiro.token.UserAuthenticationToken;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;

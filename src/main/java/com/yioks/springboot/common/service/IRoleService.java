@@ -1,8 +1,7 @@
-package com.yioks.springboot.common.shiro.service;
+package com.yioks.springboot.common.service;
 
-import com.yioks.springboot.common.shiro.model.IPermission;
-import com.yioks.springboot.common.shiro.model.IRole;
-import org.apache.commons.lang3.StringUtils;
+import com.yioks.springboot.common.model.IPermission;
+import com.yioks.springboot.common.model.IRole;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.yioks.springboot.common.shiro.model;
+package com.yioks.springboot.common.model;
 
 
 import org.apache.commons.lang3.StringUtils;

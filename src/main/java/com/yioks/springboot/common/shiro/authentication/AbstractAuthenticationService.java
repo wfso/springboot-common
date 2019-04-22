@@ -2,7 +2,7 @@ package com.yioks.springboot.common.shiro.authentication;
 
 import com.google.common.eventbus.EventBus;
 import com.yioks.springboot.common.shiro.event.LoginEvent;
-import com.yioks.springboot.common.shiro.model.IUser;
+import com.yioks.springboot.common.model.IUser;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

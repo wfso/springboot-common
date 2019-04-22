@@ -1,4 +1,4 @@
-package com.yioks.springboot.common.shiro.model;
+package com.yioks.springboot.common.model;
 
 import javax.persistence.Transient;
 import java.io.Serializable;
