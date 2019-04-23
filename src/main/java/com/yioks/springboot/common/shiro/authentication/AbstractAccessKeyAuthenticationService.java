@@ -113,7 +113,7 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
     IAccessKey accessKey = getByAccessKeyId(accessKeyId);
 
     // 没有与 accessKeyId 对应的 AccessKey
-    if (accessKey == null || accessKey.isAvailable()) {
+    if (accessKey == null || !accessKey.isAvailable()) {
       throw new AccessKeyAuthenticationException("AKE-000003");
     }
 
