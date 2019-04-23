@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.shiro.authentication;
 
-import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
+import com.yioks.springboot.common.shiro.exception.AccessKeyAuthenticationException;
 import com.yioks.springboot.common.model.IAccessKey;
 import com.yioks.springboot.common.model.IUser;
 import com.yioks.springboot.common.service.IUserService;
@@ -82,23 +82,23 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
 
     // 请求参数中不包含 accessKeyId
     if (!params.containsKey("accessKeyId")) {
-      throw new StatelessAuthenticationException("AKE-000001");
+      throw new AccessKeyAuthenticationException("AKE-000001");
     }
 
     // 请求参数中不包含 sign
     if (!params.containsKey("sign")) {
-      throw new StatelessAuthenticationException("AKE-000002");
+      throw new AccessKeyAuthenticationException("AKE-000002");
     }
 
     // 请求参数中不包含 timestamp
     if (!params.containsKey("timestamp")) {
-      throw new StatelessAuthenticationException("AKE-000006");
+      throw new AccessKeyAuthenticationException("AKE-000006");
     }
 
     String timestamp = params.get("timestamp");
 
     if (System.currentTimeMillis() - Long.parseLong(timestamp) > 5 * 60 * 1000) {
-      throw new StatelessAuthenticationException("AKE-000007");
+      throw new AccessKeyAuthenticationException("AKE-000007");
     }
 
 
@@ -114,7 +114,7 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
 
     // 没有与 accessKeyId 对应的 AccessKey
     if (accessKey == null || accessKey.isAvailable()) {
-      throw new StatelessAuthenticationException("AKE-000003");
+      throw new AccessKeyAuthenticationException("AKE-000003");
     }
 
     // 构造待签名字符串
@@ -125,11 +125,11 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
     if (supportSignType(signType)) {
       localSign = sign(signType, signStr, accessKey.getAccessKeySecret());
     } else {
-      throw new StatelessAuthenticationException("AKE-000004");
+      throw new AccessKeyAuthenticationException("AKE-000004");
     }
 
     if (!sign.equalsIgnoreCase(localSign)) {
-      throw new StatelessAuthenticationException("AKE-000005");
+      throw new AccessKeyAuthenticationException("AKE-000005");
     }
     AccessKeyToken.setUserId(accessKey.getUserIdentification());
     AccessKeyToken.setPassword(localSign);

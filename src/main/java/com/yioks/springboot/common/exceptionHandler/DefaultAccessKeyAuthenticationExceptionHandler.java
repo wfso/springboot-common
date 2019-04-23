@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.exceptionHandler;
 
-import com.yioks.springboot.common.shiro.exception.StatelessAuthenticationException;
+import com.yioks.springboot.common.shiro.exception.AccessKeyAuthenticationException;
 import com.yioks.springboot.common.shiro.token.AccessKeyAuthenticationToken;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class DefaultAccessKeyAuthenticationExceptionHandler extends AbstractAuth
     this.msgName = msgName;
   }
 
-  @ExceptionHandler(StatelessAuthenticationException.class)
+  @ExceptionHandler(AccessKeyAuthenticationException.class)
   @ResponseBody
   ResponseEntity<Object> handleStatelessAuthenticationControllerException(Throwable throwable) {
     return commonAuthenticationExceptionHandler(throwable,codeName,msgName);
