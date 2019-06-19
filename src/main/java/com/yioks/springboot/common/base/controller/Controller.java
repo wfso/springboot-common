@@ -1,6 +1,7 @@
 package com.yioks.springboot.common.base.controller;
 
-public interface IBaseController<T, ID> {
+
+public interface Controller<T, ID> {
   T add(T t);
 
   T edit(T t);
