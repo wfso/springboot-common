@@ -6,10 +6,10 @@ import com.yioks.springboot.common.model.IRole;
 import java.util.Collection;
 import java.util.List;
 
-public interface IRoleService<T extends IRole> {
-  T getById(long id);
+public interface IRoleService<T extends IRole<ID>,ID> {
+  T getById(ID id);
 
-  List<T> getById(Iterable<Long> ids);
+  List<T> getById(Iterable<ID> ids);
 
   T getByCode(String code);
 
