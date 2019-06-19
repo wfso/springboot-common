@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public interface IMapper<T> {
+public interface Mapper<T> {
 
   long count(@Nullable @Param("filter") IFilter filter);
 

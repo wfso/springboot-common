@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.base.service;
 
-import com.yioks.springboot.common.base.model.IModel;
+import com.yioks.springboot.common.base.model.Model;
 import com.yioks.springboot.common.jpa.filter.IFilter;
 import com.yioks.springboot.common.jpa.specification.AbstractSpecification;
 import com.yioks.springboot.common.base.repository.BaseJpaRepository;
@@ -13,13 +13,14 @@ import javax.persistence.criteria.*;
 import javax.transaction.Transactional;
 import java.util.*;
 
-public abstract class BaseJpaService<T extends IModel> implements IService<T, Long> {
-  protected abstract BaseJpaRepository<T> getRepository();
+public abstract class BaseJpaService<T extends Model<ID>, ID> implements Service<T, ID> {
+  protected abstract BaseJpaRepository<T,ID> getRepository();
+  protected abstract ID generateId();
 
   @Override
   public T create(T entity) {
     updateDomain(entity);
-    entity.setId(0L);
+    entity.setId(generateId());
     getRepository().save(entity);
     return entity;
   }
@@ -66,7 +67,7 @@ public abstract class BaseJpaService<T extends IModel> implements IService<T, Lo
   }
 
   @Override
-  public void removeById(Long id) {
+  public void removeById(ID id) {
     getRepository().deleteById(id);
   }
 
@@ -96,12 +97,12 @@ public abstract class BaseJpaService<T extends IModel> implements IService<T, Lo
   }
 
   @Override
-  public T getById(Long id) {
+  public T getById(ID id) {
     return getRepository().findById(id).orElse(null);
   }
 
   @Override
-  public List<T> getByIds(Iterable<Long> ids) {
+  public List<T> getByIds(Iterable<ID> ids) {
     return getRepository().findAllById(ids);
   }
 

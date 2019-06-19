@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.base.model;
 
-public interface IModel {
+public interface Model<ID> {
 
   long getCreatedAt();
 
@@ -10,7 +10,9 @@ public interface IModel {
 
   void setUpdatedAt(long updatedAt);
 
-  long getId();
+  ID getId();
 
-  void setId(long id);
+  void setId(ID id);
+
+  boolean isAvailable();
 }

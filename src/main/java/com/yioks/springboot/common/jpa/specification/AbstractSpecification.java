@@ -171,7 +171,7 @@ public abstract class AbstractSpecification<T> implements Specification<T> {
     }
   }
 
-  private static List<Object> generateInEnumObjects(IFilter filter) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+  private static List<Object> generateInEnumObjects(IFilter filter) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
     Class clazz = filter.getClazz();
     Object[] objects = clazz.getEnumConstants();
     List<Object> os = new ArrayList<>();
@@ -188,7 +188,7 @@ public abstract class AbstractSpecification<T> implements Specification<T> {
     return os;
   }
 
-  private static Object generateEqualEnumObject(IFilter filter) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+  private static Object generateEqualEnumObject(IFilter filter) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
     Class clazz = filter.getClazz();
     if (clazz.isEnum()) {
       Object[] objects = clazz.getEnumConstants();

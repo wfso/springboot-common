@@ -1,6 +1,6 @@
 package com.yioks.springboot.common.base.service;
 
-import com.yioks.springboot.common.base.mapper.IMapper;
+import com.yioks.springboot.common.base.mapper.Mapper;
 import com.yioks.springboot.common.jpa.builder.DefaultFiltersBuilder;
 import com.yioks.springboot.common.jpa.filter.DefaultFilter;
 import com.yioks.springboot.common.jpa.filter.FilterType;
@@ -12,14 +12,14 @@ import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseMyBatisService<T> implements IQueryService<T, Long> {
+public abstract class BaseMyBatisService<T,ID> implements QueryService<T, ID> {
 
-  protected abstract IMapper<T> getMapper();
+  protected abstract Mapper<T> getMapper();
 
   protected abstract String getIdFieldName();
 
   @Override
-  public T getById(Long id) {
+  public T getById(ID id) {
     IFilter filter = DefaultFiltersBuilder.getAndInstance()
       .andEqual(getIdFieldName(), id.toString())
       .build();
@@ -28,9 +28,9 @@ public abstract class BaseMyBatisService<T> implements IQueryService<T, Long> {
   }
 
   @Override
-  public List<T> getByIds(Iterable<Long> ids) {
+  public List<T> getByIds(Iterable<ID> ids) {
     List<String> strs = new ArrayList<>();
-    for (Long id : ids) {
+    for (ID id : ids) {
       strs.add(id.toString());
     }
     IFilter filter = DefaultFiltersBuilder.getAndInstance()
