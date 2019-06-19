@@ -14,8 +14,11 @@ import javax.transaction.Transactional;
 import java.util.*;
 
 public abstract class BaseJpaService<T extends Model<ID>, ID> implements Service<T, ID> {
-  protected abstract BaseJpaRepository<T,ID> getRepository();
-  protected abstract ID generateId();
+  protected abstract BaseJpaRepository<T, ID> getRepository();
+
+  protected ID generateId() {
+    return null;
+  }
 
   @Override
   public T create(T entity) {
