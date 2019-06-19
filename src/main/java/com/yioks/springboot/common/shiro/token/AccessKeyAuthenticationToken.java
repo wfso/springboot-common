@@ -5,19 +5,19 @@ import org.apache.shiro.authc.AuthenticationToken;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class AccessKeyAuthenticationToken implements AuthenticationToken {
+public class AccessKeyAuthenticationToken<ID> implements AuthenticationToken {
 
-  private long userId;
+  private ID userId;
 
   private String password;
 
   private Map<String, String> params = new TreeMap<>();
 
-  public long getUserId() {
+  public ID getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(ID userId) {
     this.userId = userId;
   }
 

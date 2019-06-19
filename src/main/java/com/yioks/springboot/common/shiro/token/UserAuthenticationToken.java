@@ -2,15 +2,15 @@ package com.yioks.springboot.common.shiro.token;
 
 import org.apache.shiro.authc.UsernamePasswordToken;
 
-public class UserAuthenticationToken extends UsernamePasswordToken {
+public class UserAuthenticationToken<ID> extends UsernamePasswordToken {
 
-  private long userId;
+  private ID userId;
 
-  public long getUserId() {
+  public ID getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(ID userId) {
     this.userId = userId;
   }
 

@@ -6,14 +6,14 @@ import org.apache.shiro.SecurityUtils;
 
 import java.util.Collection;
 
-public interface IUserService<T extends IUser> {
-  T getByIdentification(Long id);
+public interface IUserService<T extends IUser<ID>,ID> {
+  T getByIdentification(ID id);
 
   Collection<? extends IRole> getRolesByUser(T user);
 
   Collection<? extends IPermission> getUserPermission(T user);
 
-  default Collection<? extends IRole> getRolesByUserIdentification(Long id) {
+  default Collection<? extends IRole> getRolesByUserIdentification(ID id) {
     return getRolesByUser(getByIdentification(id));
   }
 

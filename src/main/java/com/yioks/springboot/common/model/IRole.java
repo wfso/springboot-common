@@ -1,15 +1,11 @@
 package com.yioks.springboot.common.model;
 
-
-import org.apache.commons.lang3.StringUtils;
-
-import javax.persistence.Transient;
 import java.io.Serializable;
 
-public interface IRole extends Serializable {
-  long getId();
+public interface IRole<ID> extends Serializable {
+  ID getId();
 
-  void setId(long id);
+  void setId(ID id);
 
   String getCode();
 
@@ -23,8 +19,5 @@ public interface IRole extends Serializable {
 
   void setIntro(String intro);
 
-  @Transient
-  default boolean isAvailable() {
-    return getId() > 0 && StringUtils.isNotBlank(getCode());
-  }
+  boolean isAvailable();
 }

@@ -1,15 +1,11 @@
 package com.yioks.springboot.common.model;
 
-import javax.persistence.Transient;
 import java.io.Serializable;
 
-public interface IUser extends Serializable {
-  long getIdentification();
+public interface IUser<ID> extends Serializable {
+  ID getIdentification();
 
   String getCredentials();
 
-  @Transient
-  default boolean isAvailable() {
-    return getIdentification() > 0;
-  }
+  boolean isAvailable();
 }

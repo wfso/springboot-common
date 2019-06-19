@@ -76,9 +76,9 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
   @Override
   protected IUser verifyToken(AuthenticationToken token) throws AuthenticationException {
 
-    AccessKeyAuthenticationToken AccessKeyToken = (AccessKeyAuthenticationToken) token;
+    AccessKeyAuthenticationToken accessKeyToken = (AccessKeyAuthenticationToken) token;
 
-    Map<String, String> params = AccessKeyToken.getParams();
+    Map<String, String> params = accessKeyToken.getParams();
 
     // 请求参数中不包含 accessKeyId
     if (!params.containsKey("accessKeyId")) {
@@ -131,8 +131,8 @@ public abstract class AbstractAccessKeyAuthenticationService extends AbstractAut
     if (!sign.equalsIgnoreCase(localSign)) {
       throw new AccessKeyAuthenticationException("AKE-000005");
     }
-    AccessKeyToken.setUserId(accessKey.getUserIdentification());
-    AccessKeyToken.setPassword(localSign);
+    accessKeyToken.setUserId(accessKey.getUserIdentification());
+    accessKeyToken.setPassword(localSign);
     return userService.getByIdentification(accessKey.getUserIdentification());
   }
 }
