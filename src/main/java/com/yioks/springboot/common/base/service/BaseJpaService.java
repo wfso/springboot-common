@@ -22,15 +22,14 @@ public abstract class BaseJpaService<T extends Model<ID>, ID> implements Service
 
   @Override
   public T create(T entity) {
-    updateDomain(entity);
-    entity.setId(generateId());
+    initCreateDomain(entity);
     getRepository().save(entity);
     return entity;
   }
 
   @Override
   public T update(T entity) {
-    updateDomain(entity);
+    initUpdateDomain(entity);
     getRepository().save(entity);
     return entity;
   }
@@ -39,7 +38,7 @@ public abstract class BaseJpaService<T extends Model<ID>, ID> implements Service
   @Override
   public List<T> create(Iterable<T> entities) {
     for (T t : entities) {
-      updateDomain(t);
+      initCreateDomain(t);
     }
     return getRepository().saveAll(entities);
   }
@@ -48,7 +47,7 @@ public abstract class BaseJpaService<T extends Model<ID>, ID> implements Service
   @Override
   public List<T> update(Iterable<T> entities) {
     for (T t : entities) {
-      updateDomain(t);
+      initUpdateDomain(t);
     }
     return getRepository().saveAll(entities);
   }
@@ -139,11 +138,19 @@ public abstract class BaseJpaService<T extends Model<ID>, ID> implements Service
     return getRepository().findAll(getSpecification(filter));
   }
 
-  protected void updateDomain(T entity) {
+  protected void initCreateDomain(T entity) {
+    initCommonDomain(entity);
     long time = System.currentTimeMillis();
-    if (entity.getCreatedAt() <= 0) {
-      entity.setCreatedAt(time);
-    }
+    entity.setCreatedAt(time);
+    entity.setId(generateId());
+  }
+
+  protected void initUpdateDomain(T entity) {
+    initCommonDomain(entity);
+  }
+
+  protected void initCommonDomain(T entity) {
+    long time = System.currentTimeMillis();
     entity.setUpdatedAt(time);
   }
 
