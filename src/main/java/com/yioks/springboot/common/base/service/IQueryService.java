@@ -11,6 +11,8 @@ public interface IQueryService<T,ID> {
 
   T getById(ID id);
 
+  T getByUuid(String uuid);
+
   List<T> getByIds(Iterable<ID> ids);
 
   long countAll();

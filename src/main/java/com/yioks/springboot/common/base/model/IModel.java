@@ -13,4 +13,8 @@ public interface IModel {
   long getId();
 
   void setId(long id);
+
+  String getUuid();
+
+  void setUuid(String uuid);
 }

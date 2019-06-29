@@ -17,11 +17,21 @@ public abstract class BaseMyBatisService<T> implements IQueryService<T, Long> {
   protected abstract IMapper<T> getMapper();
 
   protected abstract String getIdFieldName();
+  protected abstract String getUuidFieldName();
 
   @Override
   public T getById(Long id) {
     IFilter filter = DefaultFiltersBuilder.getAndInstance()
       .andEqual(getIdFieldName(), id.toString())
+      .build();
+    List<T> ts = getMapper().search(filter, 0, 1, null);
+    return ts != null && ts.size() > 0 ? ts.get(0) : null;
+  }
+
+  @Override
+  public T getByUuid(String id) {
+    IFilter filter = DefaultFiltersBuilder.getAndInstance()
+      .andEqual(getUuidFieldName(), id)
       .build();
     List<T> ts = getMapper().search(filter, 0, 1, null);
     return ts != null && ts.size() > 0 ? ts.get(0) : null;

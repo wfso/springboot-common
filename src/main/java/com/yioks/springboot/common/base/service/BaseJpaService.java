@@ -70,6 +70,13 @@ public abstract class BaseJpaService<T extends IModel> implements IService<T, Lo
     getRepository().deleteById(id);
   }
 
+
+  @Override
+  @Transactional
+  public void removeByUuid(String Uuid) {
+    getRepository().deleteByUuid(Uuid);
+  }
+
   @Override
   public void remove(Iterable<T> entities) {
     getRepository().deleteInBatch(entities);
@@ -98,6 +105,11 @@ public abstract class BaseJpaService<T extends IModel> implements IService<T, Lo
   @Override
   public T getById(Long id) {
     return getRepository().findById(id).orElse(null);
+  }
+
+  @Override
+  public T getByUuid(String uuid) {
+    return getRepository().getByUuid(uuid);
   }
 
   @Override

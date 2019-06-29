@@ -31,4 +31,9 @@ public abstract class BaseJpaModel implements IModel, Serializable {
   @ApiModelProperty(value = "ID-唯一标识", example = "0")
   @NotNull(groups = {Update.class})
   private long id = 0;
+
+  @Column(length = 32)
+  @ApiModelProperty(value = "真实ID-唯一标识", example = "")
+  @Getter()
+  private String uuid;
 }

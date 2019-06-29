@@ -41,6 +41,9 @@ public interface IService<T, ID> extends IQueryService<T, ID> {
 
   void removeById(ID id);
 
+
+  void removeByUuid(String Uuid);
+
   @Transactional
   default void removeByIds(Iterable<ID> ids) {
     remove(getByIds(ids));
