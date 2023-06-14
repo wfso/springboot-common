@@ -133,7 +133,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>29.0-jre</version>
+      <version>32.0.0-jre</version>
     </dependency>
 
     <!-- 阿里云 OSS -->
