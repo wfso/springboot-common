@@ -126,7 +126,7 @@
     <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
-      <version>1.4.17</version>
+      <version>1.4.19</version>
     </dependency>
 
     <!-- google Java项目广泛依赖 的核心库 -->
